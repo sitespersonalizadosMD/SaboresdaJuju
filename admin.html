@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+
+        Painel • Sabores da Juju
+
+    </title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="css/admin.css">
+
+</head>
+
+<body>
+
+<div class="painel">
+
+    <!-- MENU -->
+
+    <aside class="menu">
+
+        <h2>
+
+            🍽️ Sabores da Juju
+
+        </h2>
+
+        <ul>
+
+            <li class="ativo">
+
+                Dashboard
+
+            </li>
+
+            <li>
+
+                Pratos
+
+            </li>
+
+            <li>
+
+                Acompanhamentos
+
+            </li>
+
+            <li>
+
+                Finalizações
+
+            </li>
+
+            <li>
+
+                Configurações
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- CONTEÚDO -->
+
+    <main class="conteudo">
+
+        <h1>
+
+            Dashboard
+
+        </h1>
+
+        <!-- CARDS -->
+
+        <section class="cards">
+
+            <div class="card">
+
+                <h3>
+
+                    Pratos
+
+                </h3>
+
+                <span id="totalPratos">
+
+                    0
+
+                </span>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+
+                    Acompanhamentos
+
+                </h3>
+
+                <span id="totalAcompanhamentos">
+
+                    0
+
+                </span>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+
+                    Finalizações
+
+                </h3>
+
+                <span id="totalFinalizacoes">
+
+                    0
+
+                </span>
+
+            </div>
+
+        </section>
+
+        <!-- TABELA -->
+
+        <section class="tabela">
+
+            <div class="topo-tabela">
+
+                <h2>
+
+                    Pratos Cadastrados
+
+                </h2>
+
+                <button id="novoPrato">
+
+                    + Novo Prato
+
+                </button>
+
+            </div>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+
+                            Nome
+
+                        </th>
+
+                        <th>
+
+                            Valor
+
+                        </th>
+
+                        <th>
+
+                            Ações
+
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="listaPratos">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
