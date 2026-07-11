@@ -366,3 +366,68 @@ renderizarTabela();
 
 }
 renderizarTabela();
+/*=========================================
+MENU LATERAL
+=========================================*/
+
+const menu = document.querySelectorAll(".menu-item");
+
+menu.forEach(item=>{
+
+    item.addEventListener("click",()=>{
+
+        menu.forEach(i=>i.classList.remove("ativo"));
+
+        item.classList.add("ativo");
+
+        document
+        .querySelectorAll(".pagina-admin")
+        .forEach(p=>{
+
+            p.style.display="none";
+
+        });
+
+        const nome=item.dataset.pagina;
+
+        document.getElementById("tituloPagina").innerText=nome;
+
+        if(nome==="Dashboard"){
+
+            paginaDashboard.style.display="block";
+
+        }
+
+        if(nome==="Pratos"){
+
+            paginaPratos.style.display="block";
+
+        }
+
+        if(nome==="Acompanhamentos"){
+
+            paginaAcompanhamentos.style.display="block";
+
+        }
+
+        if(nome==="Finalizações"){
+
+            paginaFinalizacoes.style.display="block";
+
+        }
+
+        if(nome==="Pedidos"){
+
+            paginaPedidos.style.display="block";
+
+        }
+
+        if(nome==="Configurações"){
+
+            paginaConfiguracoes.style.display="block";
+
+        }
+
+    });
+
+});
