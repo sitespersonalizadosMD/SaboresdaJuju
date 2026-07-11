@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Sabores da Juju</title>
+
+    <meta name="description"
+          content="Cardápio Digital - Sabores da Juju">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+<!--=========================================
+HEADER
+==========================================-->
+
+<header class="header">
+
+    <div class="container">
+
+        <div class="logo">
+
+            🍽️
+
+            <div>
+
+                <h1>
+
+                    Sabores da Juju
+
+                </h1>
+
+                <span>
+
+                    Comida Caseira
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+<!--=========================================
+CARDÁPIO
+==========================================-->
+
+<section class="cardapio">
+
+    <div class="container">
+
+        <div class="titulo">
+
+            <h2>
+
+                Pratos Principais
+
+            </h2>
+
+            <p>
+
+                Escolha um prato para montar seu almoço.
+
+            </p>
+
+        </div>
+
+        <div id="listaProdutos"
+             class="lista-produtos">
+
+            <!-- Os pratos serão criados pelo JavaScript -->
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--=========================================
+MODAL
+==========================================-->
+
+<div id="modalPedido"
+     class="modal">
+
+    <div class="modal-box">
+
+        <button class="fechar-modal">
+
+            ×
+
+        </button>
+
+        <h2 id="tituloPrato">
+
+            Prato
+
+        </h2>
+
+        <p id="precoPrato"
+           class="preco-modal">
+
+            R$ 0,00
+
+        </p>
+
+        <hr>
+
+        <h3>
+
+            Escolha até 3 acompanhamentos
+
+        </h3>
+
+        <div class="grupo-checkbox">
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    value="Arroz Branco">
+
+                Arroz Branco
+
+            </label>
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    value="Arroz Integral">
+
+                Arroz Integral
+
+            </label>
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    value="Feijão Preto">
+
+                Feijão Preto
+
+            </label>
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    value="Feijão Mulatinho">
+
+                Feijão Mulatinho
+
+            </label>
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    value="Macarrão">
+
+                Macarrão
+
+            </label>
+
+        </div>
+
+        <hr>
+
+        <h3>
+
+            Finalização
+
+        </h3>
+
+        <div class="grupo-radio">
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="finalizacao"
+                    value="Batata Frita">
+
+                Batata Frita
+
+            </label>
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="finalizacao"
+                    value="Purê de Batata">
+
+                Purê de Batata
+
+            </label>
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="finalizacao"
+                    value="Salada Verde">
+
+                Salada Verde
+
+            </label>
+
+        </div>
+
+        <hr>
+
+        <h3>
+
+            Deseja Farofa?
+
+        </h3>
+
+        <div class="grupo-radio">
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="farofa"
+                    value="Sim">
+
+                Sim
+
+            </label>
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="farofa"
+                    value="Não"
+                    checked>
+
+                Não
+
+            </label>
+
+        </div>
+
+        <hr>
+
+        <h3>
+
+            Forma de Pagamento
+
+        </h3>
+
+        <select id="formaPagamento">
+
+            <option>Pix</option>
+
+            <option>Cartão</option>
+
+            <option>Dinheiro</option>
+
+        </select>
+
+        <button
+            id="adicionarPedido"
+            class="btn-principal">
+
+            Adicionar ao Pedido
+
+        </button>
+
+    </div>
+
+</div>
+<!--=========================================
+CARRINHO
+==========================================-->
+
+<aside class="carrinho">
+
+    <div class="topo-carrinho">
+
+        <h2>
+
+            🛒 Meu Pedido
+
+        </h2>
+
+    </div>
+
+    <div id="listaPedido"
+         class="lista-pedido">
+
+        <p class="carrinho-vazio">
+
+            Nenhum prato adicionado.
+
+        </p>
+
+    </div>
+
+    <div class="rodape-carrinho">
+
+        <div class="total">
+
+            <span>
+
+                Total
+
+            </span>
+
+            <strong id="valorTotal">
+
+                R$ 0,00
+
+            </strong>
+
+        </div>
+
+        <button
+            id="finalizarPedido"
+            class="btn-finalizar">
+
+            Finalizar Pedido
+
+        </button>
+
+    </div>
+
+</aside>
+
+<!--=========================================
+RODAPÉ
+==========================================-->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <h3>
+
+            Sabores da Juju
+
+        </h3>
+
+        <p>
+
+            Cardápio Digital
+
+        </p>
+
+        <span>
+
+            Desenvolvido por MDR Sites
+
+        </span>
+
+    </div>
+
+</footer>
+
+<!--=========================================
+SCRIPTS
+==========================================-->
+
+<script src="js/produtos.js"></script>
+
+<script src="js/script.js"></script>
+
+</body>
+
+</html>
