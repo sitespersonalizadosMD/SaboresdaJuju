@@ -414,3 +414,94 @@ function ativarExcluir(){
     });
 
 }
+/*=========================================
+ACOMPANHAMENTOS
+=========================================*/
+
+let acompanhamentos = JSON.parse(
+    localStorage.getItem("acompanhamentos")
+) || [
+
+    "Arroz Branco",
+
+    "Arroz Integral",
+
+    "Feijão Preto",
+
+    "Feijão Mulatinho",
+
+    "Macarrão"
+
+];
+
+/*=========================================
+FINALIZAÇÕES
+=========================================*/
+
+let finalizacoes = JSON.parse(
+    localStorage.getItem("finalizacoes")
+) || [
+
+    "Batata Frita",
+
+    "Salada Verde",
+
+    "Purê de Batata"
+
+];
+
+/*=========================================
+CONFIGURAÇÕES
+=========================================*/
+
+let configuracoes = JSON.parse(
+    localStorage.getItem("configuracoes")
+) || {
+
+    restaurante:"Sabores da Juju",
+
+    whatsapp:"5521979825876",
+
+    pix:""
+
+};
+
+/*=========================================
+SALVAR DADOS
+=========================================*/
+
+function salvarAcompanhamentos(){
+
+    localStorage.setItem(
+
+        "acompanhamentos",
+
+        JSON.stringify(acompanhamentos)
+
+    );
+
+}
+
+function salvarFinalizacoes(){
+
+    localStorage.setItem(
+
+        "finalizacoes",
+
+        JSON.stringify(finalizacoes)
+
+    );
+
+}
+
+function salvarConfiguracoes(){
+
+    localStorage.setItem(
+
+        "configuracoes",
+
+        JSON.stringify(configuracoes)
+
+    );
+
+}
