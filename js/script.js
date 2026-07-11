@@ -4,8 +4,6 @@ ELEMENTOS
 
 const modal = document.getElementById("modalPedido");
 
-const btnEscolher = document.querySelectorAll(".btn-escolher");
-
 const fecharModal = document.querySelector(".fechar-modal");
 
 const tituloPrato = document.getElementById("tituloPrato");
@@ -32,29 +30,7 @@ let precoAtual = 0;
 
 let total = 0;
 
-/*=========================================
-ABRIR MODAL
-=========================================*/
-
-btnEscolher.forEach(botao => {
-
-    botao.addEventListener("click", () => {
-
-        pratoAtual = botao.dataset.produto;
-
-        precoAtual = Number(botao.dataset.preco);
-
-        tituloPrato.innerText = pratoAtual;
-
-        precoPrato.innerText = `R$ ${precoAtual.toFixed(2)}`;
-
-        modal.classList.add("ativo");
-
-        limparFormulario();
-
-    });
-
-});
+const listaProdutos = document.getElementById("listaProdutos");
 
 /*=========================================
 FECHAR MODAL
@@ -384,48 +360,83 @@ INICIALIZAÇÃO
 
 atualizarCarrinho();
 
-const produtos = [
+/*=========================================
+RENDERIZAR PRODUTOS
+=========================================*/
 
-    {
-        id:1,
-        nome:"Bife à Cavalo",
-        preco:22,
-        imagem:"img/bife.jpg"
-    },
+function renderizarProdutos() {
 
-    {
-        id:2,
-        nome:"Frango à Parmegiana",
-        preco:18,
-        imagem:"img/parmegiana.jpg"
-    },
+    listaProdutos.innerHTML = "";
 
-    {
-        id:3,
-        nome:"Frango Acebolado",
-        preco:18,
-        imagem:"img/acebolado.jpg"
-    },
+    produtos.forEach(produto => {
 
-    {
-        id:4,
-        nome:"Frango à Milanesa",
-        preco:18,
-        imagem:"img/milanesa.jpg"
-    },
+        const card = document.createElement("div");
 
-    {
-        id:5,
-        nome:"Omelete",
-        preco:16,
-        imagem:"img/omelete.jpg"
-    },
+        card.className = "produto-card";
 
-    {
-        id:6,
-        nome:"Calabresa Acebolada",
-        preco:16,
-        imagem:"img/calabresa.jpg"
-    }
+        card.innerHTML = `
 
-];
+            <img src="${produto.imagem}" alt="${produto.nome}">
+
+            <div class="produto-info">
+
+                <h3>${produto.nome}</h3>
+
+                <span class="preco">
+
+                    R$ ${produto.preco.toFixed(2)}
+
+                </span>
+
+                <button
+                    class="btn-escolher"
+                    data-produto="${produto.nome}"
+                    data-preco="${produto.preco}">
+
+                    Escolher
+
+                </button>
+
+            </div>
+
+        `;
+
+        listaProdutos.appendChild(card);
+
+    });
+
+    ativarBotoesProdutos();
+
+}
+
+/*=========================================
+ATIVAR BOTÕES
+=========================================*/
+
+function ativarBotoesProdutos(){
+
+    document.querySelectorAll(".btn-escolher")
+    .forEach(botao=>{
+
+        botao.addEventListener("click",()=>{
+
+            pratoAtual = botao.dataset.produto;
+
+            precoAtual = Number(botao.dataset.preco);
+
+            tituloPrato.innerText = pratoAtual;
+
+            precoPrato.innerText =
+            `R$ ${precoAtual.toFixed(2)}`;
+
+            limparFormulario();
+
+            modal.classList.add("ativo");
+
+        });
+
+    });
+
+}
+
+renderizarProdutos();
