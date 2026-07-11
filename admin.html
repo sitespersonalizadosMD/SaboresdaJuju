@@ -49,172 +49,211 @@
 
         <ul>
 
-            <li class="ativo">
+            <li
+class="menu-item ativo"
+data-pagina="Dashboard">
 
-                Dashboard
+Dashboard
 
-            </li>
+</li>
 
-            <li>
+            <li
+class="menu-item"
+data-pagina="Pratos">
 
-                Pratos
+Pratos
 
-            </li>
+</li>
 
-            <li>
+<li
+class="menu-item"
+data-pagina="Acompanhamentos">
 
-                Acompanhamentos
+Acompanhamentos
 
-            </li>
+</li>
 
-            <li>
+<li
+class="menu-item"
+data-pagina="Finalizações">
 
-                Finalizações
+Finalizações
 
-            </li>
+</li>
 
-            <li>
+<li
+class="menu-item"
+data-pagina="Pedidos">
 
-                Pedidos
+Pedidos
 
-            </li>
+</li>
 
-            <li>
+<li
+class="menu-item"
+data-pagina="Configurações">
 
-                Configurações
+Configurações
 
-            </li>
-
-        </ul>
-
-    </aside>
-
+</li>
     <!-- CONTEÚDO -->
 
     <main class="conteudo">
 
-        <header>
+<header>
 
-            <h1>
+    <h1 id="tituloPagina">
 
-                Dashboard
+        Dashboard
 
-            </h1>
+    </h1>
 
-        </header>
+</header>
 
-        <!-- CARDS -->
+<!-- DASHBOARD -->
 
-        <section class="cards">
+<section id="paginaDashboard" class="pagina-admin">
 
-            <div class="card">
+    <section class="cards">
 
-                <h3>
+        <div class="card">
 
-                    Pratos
+            <h3>Pratos</h3>
 
-                </h3>
+            <span id="totalPratos">0</span>
 
-                <span>
+        </div>
 
-                    6
+        <div class="card">
 
-                </span>
+            <h3>Acompanhamentos</h3>
 
-            </div>
+            <span id="totalAcompanhamentos">5</span>
 
-            <div class="card">
+        </div>
 
-                <h3>
+        <div class="card">
 
-                    Acompanhamentos
+            <h3>Finalizações</h3>
 
-                </h3>
+            <span id="totalFinalizacoes">3</span>
 
-                <span>
+        </div>
 
-                    5
+    </section>
 
-                </span>
+</section>
 
-            </div>
+<!-- PRATOS -->
 
-            <div class="card">
+<section
+    id="paginaPratos"
+    class="pagina-admin"
+    style="display:none;">
 
-                <h3>
+    <section class="tabela">
 
-                    Finalizações
+        <div class="topo-tabela">
 
-                </h3>
+            <h2>
 
-                <span>
+                Pratos Cadastrados
 
-                    3
+            </h2>
 
-                </span>
+            <button id="novoPrato">
 
-            </div>
+                + Novo Prato
 
-        </section>
+            </button>
 
-        <!-- TABELA -->
+        </div>
 
-        <section class="tabela">
+        <table>
 
-            <div class="topo-tabela">
+            <thead>
 
-                <h2>
+                <tr>
 
-                    Pratos Cadastrados
+                    <th>Nome</th>
 
-                </h2>
+                    <th>Valor</th>
 
-                <button id="novoPrato">
+                    <th>Ações</th>
 
-                    + Novo Prato
+                </tr>
 
-                </button>
+            </thead>
 
-            </div>
+            <tbody id="listaPratos">
 
-            <table>
+            </tbody>
 
-                <thead>
+        </table>
 
-                    <tr>
+    </section>
 
-                        <th>
+</section>
 
-                            Nome
+<!-- ACOMPANHAMENTOS -->
 
-                        </th>
+<section
+    id="paginaAcompanhamentos"
+    class="pagina-admin"
+    style="display:none;">
 
-                        <th>
+    <h2>
 
-                            Valor
+        Cadastro de Acompanhamentos
 
-                        </th>
+    </h2>
 
-                        <th>
+</section>
 
-                            Ações
+<!-- FINALIZAÇÕES -->
 
-                        </th>
+<section
+    id="paginaFinalizacoes"
+    class="pagina-admin"
+    style="display:none;">
 
-                    </tr>
+    <h2>
 
-                </thead>
+        Cadastro de Finalizações
 
-               <tbody id="listaPratos">
+    </h2>
 
-</tbody>
-            </table>
+</section>
 
-        </section>
+<!-- PEDIDOS -->
 
-    </main>
+<section
+    id="paginaPedidos"
+    class="pagina-admin"
+    style="display:none;">
 
-</div>
+    <h2>
+
+        Pedidos
+
+    </h2>
+
+</section>
+
+<!-- CONFIGURAÇÕES -->
+
+<section
+    id="paginaConfiguracoes"
+    class="pagina-admin"
+    style="display:none;">
+
+    <h2>
+
+        Configurações
+
+    </h2>
+
+</section>
     <!--=========================================
 MODAL NOVO PRATO
 ==========================================-->
