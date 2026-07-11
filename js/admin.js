@@ -23,3 +23,42 @@ alert("Usuário ou senha inválidos.");
 }
 
 });
+/*=========================================
+MODAL
+=========================================*/
+
+const btnNovoPrato = document.getElementById("novoPrato");
+
+const modal = document.getElementById("modalPrato");
+
+const fechar = document.getElementById("fecharModal");
+
+if(btnNovoPrato){
+
+    btnNovoPrato.addEventListener("click",()=>{
+
+        modal.classList.add("ativo");
+
+    });
+
+}
+
+if(fechar){
+
+    fechar.addEventListener("click",()=>{
+
+        modal.classList.remove("ativo");
+
+    });
+
+}
+
+window.addEventListener("click",(e)=>{
+
+    if(e.target===modal){
+
+        modal.classList.remove("ativo");
+
+    }
+
+});
