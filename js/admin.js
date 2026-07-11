@@ -1,28 +1,31 @@
 const usuario = "admin";
-
 const senha = "123456";
 
-document
-.getElementById("formLogin")
-.addEventListener("submit",(e)=>{
+const formLogin = document.getElementById("formLogin");
 
-e.preventDefault();
+if(formLogin){
 
-const user=document.getElementById("usuario").value;
+    formLogin.addEventListener("submit",(e)=>{
 
-const pass=document.getElementById("senha").value;
+        e.preventDefault();
 
-if(user===usuario && pass===senha){
+        const user = document.getElementById("usuario").value;
 
-window.location.href="admin.html";
+        const pass = document.getElementById("senha").value;
 
-}else{
+        if(user === usuario && pass === senha){
 
-alert("Usuário ou senha inválidos.");
+            window.location.href = "admin.html";
+
+        }else{
+
+            alert("Usuário ou senha inválidos.");
+
+        }
+
+    });
 
 }
-
-});
 /*=========================================
 MODAL
 =========================================*/
