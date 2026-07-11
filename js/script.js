@@ -376,8 +376,6 @@ function renderizarProdutos() {
 
         card.innerHTML = `
 
-            <img src="${produto.imagem}" alt="${produto.nome}">
-
             <div class="produto-info">
 
                 <h3>${produto.nome}</h3>
