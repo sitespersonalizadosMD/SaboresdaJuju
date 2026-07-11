@@ -145,6 +145,10 @@ let pratos = JSON.parse(localStorage.getItem("pratos")) || [
 
 ];
 
+let editando = false;
+
+let indiceEdicao = null;
+
 const tabelaPratos = document.getElementById("listaPratos");
 
 function salvarBanco(){
@@ -205,7 +209,44 @@ function renderizarTabela(){
 
     });
 
-    excluirPrato();
+    /*=========================================
+EDITAR
+=========================================*/
+
+function editarPrato(){
+
+    document
+    .querySelectorAll(".editar")
+    .forEach(botao=>{
+
+        botao.onclick=()=>{
+
+            indiceEdicao = Number(botao.dataset.id);
+
+            const prato = pratos[indiceEdicao];
+
+            document.getElementById("nomePrato").value = prato.nome;
+
+            document.getElementById("precoPrato").value = prato.preco;
+
+            document.getElementById("descricaoPrato").value = prato.descricao;
+
+            editando = true;
+
+            document.getElementById("salvarPrato").innerText =
+            "Atualizar Prato";
+
+            modal.classList.add("ativo");
+
+        };
+
+    });
+
+}
+
+   excluirPrato();
+
+editarPrato();
 
 }
 /*=========================================
@@ -239,17 +280,42 @@ return;
 
 }
 
-pratos.push({
+if(editando){
 
-nome,
+    pratos[indiceEdicao] = {
 
-preco,
+        nome,
 
-descricao,
+        preco,
 
-imagem:""
+        descricao,
 
-});
+        imagem:""
+
+    };
+
+    editando = false;
+
+    indiceEdicao = null;
+
+    document.getElementById("salvarPrato").innerText =
+    "Salvar Prato";
+
+}else{
+
+    pratos.push({
+
+        nome,
+
+        preco,
+
+        descricao,
+
+        imagem:""
+
+    });
+
+}
 
 salvarBanco();
 
