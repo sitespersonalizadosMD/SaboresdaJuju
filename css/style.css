@@ -446,3 +446,534 @@ CARDS
     background:#1F3627;
 
 }
+/*=========================================
+MODAL
+=========================================*/
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+    padding:20px;
+
+}
+
+.modal.ativo{
+
+    display:flex;
+
+}
+
+.modal-box{
+
+    width:100%;
+
+    max-width:650px;
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    background:#fff;
+
+    border-radius:25px;
+
+    padding:35px;
+
+    position:relative;
+
+    animation:modal .35s ease;
+
+}
+
+@keyframes modal{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.fechar-modal{
+
+    position:absolute;
+
+    right:20px;
+
+    top:20px;
+
+    width:45px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#eee;
+
+    cursor:pointer;
+
+    font-size:22px;
+
+    transition:.3s;
+
+}
+
+.fechar-modal:hover{
+
+    background:#294936;
+
+    color:#fff;
+
+}
+
+.modal h2{
+
+    color:#294936;
+
+    margin-bottom:10px;
+
+    font-size:34px;
+
+}
+
+.modal h3{
+
+    margin:25px 0 15px;
+
+    color:#294936;
+
+}
+
+.modal hr{
+
+    margin:25px 0;
+
+    border:none;
+
+    border-top:1px solid #eee;
+
+}
+
+/*=========================================
+CHECKBOX
+=========================================*/
+
+.grupo-checkbox{
+
+    display:grid;
+
+    gap:15px;
+
+}
+
+.grupo-checkbox label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    cursor:pointer;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    border:1px solid #eee;
+
+    transition:.3s;
+
+}
+
+.grupo-checkbox label:hover{
+
+    background:#F8F6F2;
+
+    border-color:#D4A017;
+
+}
+
+/*=========================================
+RADIO
+=========================================*/
+
+.grupo-radio{
+
+    display:grid;
+
+    gap:15px;
+
+}
+
+.grupo-radio label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    cursor:pointer;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    border:1px solid #eee;
+
+    transition:.3s;
+
+}
+
+.grupo-radio label:hover{
+
+    background:#F8F6F2;
+
+    border-color:#D4A017;
+
+}
+
+/*=========================================
+SELECT
+=========================================*/
+
+select{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    border:1px solid #ddd;
+
+    margin-top:15px;
+
+    margin-bottom:25px;
+
+    font-size:16px;
+
+    font-family:inherit;
+
+}
+
+/*=========================================
+CARRINHO
+=========================================*/
+
+.carrinho{
+
+    position:fixed;
+
+    right:0;
+
+    top:0;
+
+    width:420px;
+
+    max-width:100%;
+
+    height:100vh;
+
+    background:#fff;
+
+    box-shadow:-10px 0 35px rgba(0,0,0,.15);
+
+    display:flex;
+
+    flex-direction:column;
+
+    padding:30px;
+
+    z-index:999;
+
+}
+
+.carrinho h2{
+
+    color:#294936;
+
+    margin-bottom:25px;
+
+}
+
+#listaPedido{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding-right:10px;
+
+}
+
+.item-pedido{
+
+    border:1px solid #eee;
+
+    border-radius:15px;
+
+    padding:18px;
+
+    margin-bottom:18px;
+
+    transition:.3s;
+
+}
+
+.item-pedido:hover{
+
+    border-color:#D4A017;
+
+}
+
+.item-pedido h4{
+
+    color:#294936;
+
+    margin-bottom:10px;
+
+}
+
+.item-pedido p{
+
+    font-size:14px;
+
+    color:#666;
+
+    margin:4px 0;
+
+}
+
+.total{
+
+    border-top:1px solid #eee;
+
+    padding-top:20px;
+
+    margin-top:20px;
+
+}
+
+.total h3{
+
+    color:#294936;
+
+    margin-bottom:10px;
+
+}
+
+#valorTotal{
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    color:#D4A017;
+
+}
+
+/*=========================================
+FOOTER
+=========================================*/
+
+footer{
+
+    background:#294936;
+
+    color:#fff;
+
+    text-align:center;
+
+    padding:80px 20px;
+
+    margin-top:120px;
+
+}
+
+footer h2{
+
+    font-family:'Playfair Display',serif;
+
+    margin-bottom:20px;
+
+    font-size:40px;
+
+}
+
+footer p{
+
+    margin:8px 0;
+
+    color:#ddd;
+
+}
+
+/*=========================================
+SCROLL
+=========================================*/
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#294936;
+
+    border-radius:50px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#ececec;
+
+}
+
+/*=========================================
+ANIMAÇÕES
+=========================================*/
+
+.produto-card,
+.info-card,
+.btn-principal,
+.btn-escolher{
+
+    transition:.35s ease;
+
+}
+
+.btn-principal:hover,
+.btn-escolher:hover{
+
+    box-shadow:0 15px 30px rgba(41,73,54,.25);
+
+}
+
+/*=========================================
+RESPONSIVO BASE
+=========================================*/
+
+@media(max-width:1100px){
+
+    .hero-grid{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+    }
+
+    .hero-image{
+
+        order:-1;
+
+    }
+
+    .carrinho{
+
+        position:relative;
+
+        width:100%;
+
+        height:auto;
+
+        box-shadow:none;
+
+        margin-top:80px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    nav{
+
+        display:none;
+
+    }
+
+    .hero h1{
+
+        font-size:42px;
+
+    }
+
+    .titulo h2{
+
+        font-size:38px;
+
+    }
+
+    .info-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .produtos{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .modal-box{
+
+        padding:25px;
+
+    }
+
+}
+
+@media(max-width:500px){
+
+    .hero{
+
+        padding-top:100px;
+
+    }
+
+    .hero h1{
+
+        font-size:34px;
+
+    }
+
+    .btn-principal{
+
+        width:100%;
+
+    }
+
+}
