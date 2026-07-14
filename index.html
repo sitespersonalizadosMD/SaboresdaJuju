@@ -270,22 +270,6 @@ MODAL
 
         <hr>
 
-        <h3>
-
-            Forma de Pagamento
-
-        </h3>
-
-        <select id="formaPagamento">
-
-            <option>Pix</option>
-
-            <option>Cartão</option>
-
-            <option>Dinheiro</option>
-
-        </select>
-
         <button
             id="adicionarPedido"
             class="btn-principal">
@@ -328,27 +312,39 @@ CARRINHO
 
         <div class="total">
 
-            <span>
+    <h3>Total</h3>
 
-                Total
+    <span id="valorTotal">
 
-            </span>
+        R$ 0,00
 
-            <strong id="valorTotal">
+    </span>
 
-                R$ 0,00
+</div>
 
-            </strong>
+<h3 style="margin-top:25px">
 
-        </div>
+    Forma de Pagamento
 
-        <button
-            id="finalizarPedido"
-            class="btn-finalizar">
+</h3>
 
-            Finalizar Pedido
+<select id="formaPagamento">
 
-        </button>
+    <option>Pix</option>
+
+    <option>Cartão</option>
+
+    <option>Dinheiro</option>
+
+</select>
+
+<button
+    id="finalizarPedido"
+    class="btn-principal">
+
+    Finalizar Pedido
+
+</button>
 
     </div>
 
