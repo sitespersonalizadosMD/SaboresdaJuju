@@ -1,6 +1,6 @@
-/*=========================================
+/*==================================================
 RESET
-=========================================*/
+==================================================*/
 
 *{
 
@@ -22,29 +22,31 @@ body{
 
     font-family:'Poppins',sans-serif;
 
-    background:#F7F6F2;
+    background:#F8F8F8;
 
     color:#333;
 
+    line-height:1.6;
+
 }
 
-/*=========================================
+/*==================================================
 CONTAINER
-=========================================*/
+==================================================*/
 
 .container{
 
     width:90%;
 
-    max-width:1100px;
+    max-width:1200px;
 
     margin:auto;
 
 }
 
-/*=========================================
+/*==================================================
 HEADER
-=========================================*/
+==================================================*/
 
 .header{
 
@@ -52,9 +54,15 @@ HEADER
 
     background:#FFFFFF;
 
-    padding:70px 0;
-
     border-bottom:1px solid #ECECEC;
+
+    padding:40px 0;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:999;
 
 }
 
@@ -64,55 +72,119 @@ HEADER
 
     flex-direction:column;
 
-    align-items:center;
-
     justify-content:center;
 
-    text-align:center;
+    align-items:center;
 
-    gap:15px;
+    gap:12px;
 
 }
 
 .logo h1{
 
-    font-size:54px;
+    font-size:52px;
 
     color:#2F4F3E;
 
     font-weight:700;
 
-    letter-spacing:1px;
-
 }
 
 .logo span{
 
-    font-size:18px;
-
     color:#777;
+
+    font-size:18px;
 
 }
 
-/*=========================================
-CARDÁPIO
-=========================================*/
+/*==================================================
+HERO
+==================================================*/
 
-.cardapio{
+.hero{
 
     width:100%;
 
-    background:#FAFAFA;
+    background:#FFFFFF;
 
     padding:90px 0;
 
 }
 
-.titulo{
+.hero .container{
 
-    margin-bottom:60px;
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
 
     text-align:center;
+
+}
+
+.hero h2{
+
+    font-size:54px;
+
+    color:#2F4F3E;
+
+    margin-bottom:25px;
+
+}
+
+.hero p{
+
+    width:700px;
+
+    max-width:95%;
+
+    font-size:20px;
+
+    color:#666;
+
+    margin-bottom:45px;
+
+}
+
+.hero a{
+
+    display:inline-block;
+
+    padding:18px 45px;
+
+    background:#2F4F3E;
+
+    color:#FFF;
+
+    text-decoration:none;
+
+    border-radius:12px;
+
+    transition:.3s;
+
+    font-weight:600;
+
+}
+
+.hero a:hover{
+
+    background:#C79A3B;
+
+}
+
+/*==================================================
+TÍTULOS
+==================================================*/
+
+.titulo{
+
+    text-align:center;
+
+    margin:80px 0 60px;
 
 }
 
@@ -128,35 +200,39 @@ CARDÁPIO
 
 .titulo p{
 
-    font-size:18px;
-
     color:#777;
+
+    font-size:18px;
 
 }
 
-/*=========================================
-LISTA PRODUTOS
-=========================================*/
+/*==================================================
+CARDÁPIO
+==================================================*/
 
-.lista-produtos{
+.cardapio{
 
     width:100%;
+
+    padding-bottom:80px;
+
+}
+
+.lista-produtos{
 
     display:flex;
 
     flex-direction:column;
 
-    gap:30px;
+    gap:28px;
 
 }
 
-/*=========================================
-CARD PRODUTO
-=========================================*/
+/*==================================================
+CARD
+==================================================*/
 
 .produto-card{
-
-    width:100%;
 
     background:#FFF;
 
@@ -172,15 +248,45 @@ CARD PRODUTO
 
 .produto-card:hover{
 
-    transform:translateY(-4px);
+    transform:translateY(-5px);
 
-    box-shadow:0 20px 40px rgba(0,0,0,.08);
+    box-shadow:0 20px 45px rgba(0,0,0,.08);
 
 }
 
-/*=========================================
+.produto-info{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.produto-info h3{
+
+    font-size:28px;
+
+    color:#2F4F3E;
+
+    margin-bottom:8px;
+
+}
+
+.preco{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    color:#C79A3B;
+
+}
+
+/*==================================================
 BOTÕES
-=========================================*/
+==================================================*/
 
 .btn-escolher,
 
@@ -188,7 +294,7 @@ BOTÕES
 
 .btn-finalizar{
 
-    min-width:180px;
+    width:190px;
 
     height:55px;
 
@@ -216,12 +322,12 @@ BOTÕES
 
 .btn-finalizar:hover{
 
-    background:#C89A2B;
+    background:#C79A3B;
 
 }
-/*=========================================
+/*==================================================
 MODAL
-=========================================*/
+==================================================*/
 
 .modal{
 
@@ -229,7 +335,7 @@ MODAL
 
     inset:0;
 
-    background:rgba(0,0,0,.45);
+    background:rgba(0,0,0,.55);
 
     display:none;
 
@@ -237,7 +343,9 @@ MODAL
 
     align-items:center;
 
-    z-index:999;
+    backdrop-filter:blur(6px);
+
+    z-index:9999;
 
 }
 
@@ -249,51 +357,91 @@ MODAL
 
 .modal-box{
 
-    width:95%;
+    width:650px;
 
-    max-width:550px;
-
-    background:#fff;
-
-    border-radius:20px;
-
-    padding:35px;
-
-    position:relative;
+    max-width:95%;
 
     max-height:90vh;
 
-    overflow:auto;
+    overflow-y:auto;
+
+    background:#FFFFFF;
+
+    border-radius:22px;
+
+    padding:40px;
+
+    animation:modal .35s ease;
+
+}
+
+@keyframes modal{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
 
 }
 
 .fechar-modal{
 
-    position:absolute;
+    float:right;
 
-    top:15px;
+    width:45px;
 
-    right:20px;
+    height:45px;
 
     border:none;
 
-    background:none;
+    border-radius:50%;
 
-    font-size:28px;
+    background:#F2F2F2;
 
     cursor:pointer;
+
+    font-size:22px;
+
+    transition:.3s;
+
+}
+
+.fechar-modal:hover{
+
+    background:#E6E6E6;
+
+}
+
+.modal-box h2{
+
+    color:#2F4F3E;
+
+    font-size:34px;
+
+    margin-bottom:8px;
 
 }
 
 .preco-modal{
 
-    color:#D4A017;
+    color:#C79A3B;
 
-    font-size:22px;
+    font-size:30px;
 
-    font-weight:bold;
+    font-weight:700;
 
-    margin:15px 0;
+    margin-bottom:25px;
 
 }
 
@@ -301,17 +449,77 @@ MODAL
 
     border:none;
 
-    border-top:1px solid #eee;
+    border-top:1px solid #ECECEC;
 
-    margin:25px 0;
+    margin:30px 0;
 
 }
 
-/*=========================================
-CHECKBOX / RADIO
-=========================================*/
+.modal h3{
 
-.grupo-checkbox,
+    color:#2F4F3E;
+
+    font-size:22px;
+
+    margin-bottom:20px;
+
+}
+
+/*==================================================
+CHECKBOX
+==================================================*/
+
+.grupo-checkbox{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:15px;
+
+}
+
+.grupo-checkbox label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    background:#FAFAFA;
+
+    border:1px solid #ECECEC;
+
+    border-radius:12px;
+
+    padding:16px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.grupo-checkbox label:hover{
+
+    border-color:#2F4F3E;
+
+    background:#FFFFFF;
+
+}
+
+.grupo-checkbox input{
+
+    width:18px;
+
+    height:18px;
+
+}
+
+/*==================================================
+RADIOS
+==================================================*/
 
 .grupo-radio{
 
@@ -319,11 +527,9 @@ CHECKBOX / RADIO
 
     flex-direction:column;
 
-    gap:12px;
+    gap:15px;
 
 }
-
-.grupo-checkbox label,
 
 .grupo-radio label{
 
@@ -331,13 +537,29 @@ CHECKBOX / RADIO
 
     align-items:center;
 
-    gap:10px;
+    gap:12px;
+
+    background:#FAFAFA;
+
+    border:1px solid #ECECEC;
+
+    border-radius:12px;
+
+    padding:16px;
 
     cursor:pointer;
 
+    transition:.3s;
+
 }
 
-.grupo-checkbox input,
+.grupo-radio label:hover{
+
+    border-color:#2F4F3E;
+
+    background:#FFFFFF;
+
+}
 
 .grupo-radio input{
 
@@ -347,39 +569,80 @@ CHECKBOX / RADIO
 
 }
 
+/*==================================================
+SELECT
+==================================================*/
+
 select{
 
     width:100%;
 
-    padding:14px;
+    padding:16px;
 
-    border:1px solid #ddd;
+    border-radius:12px;
 
-    border-radius:10px;
+    border:1px solid #DDD;
 
-    margin:20px 0;
-
-    font-size:15px;
-
-}
-
-/*=========================================
-CARRINHO
-=========================================*/
-
-.carrinho{
-
-    max-width:1100px;
-
-    margin:70px auto;
+    font-size:16px;
 
     background:#FFF;
 
-    border-radius:20px;
+    margin-top:10px;
 
-    padding:40px;
+    margin-bottom:30px;
+
+    outline:none;
+
+}
+
+select:focus{
+
+    border-color:#2F4F3E;
+
+}
+
+/*==================================================
+BOTÃO MODAL
+==================================================*/
+
+#adicionarPedido{
+
+    width:100%;
+
+    height:60px;
+
+    font-size:18px;
+
+    border-radius:14px;
+
+}
+/*==================================================
+CARRINHO
+==================================================*/
+
+.carrinho{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:80px auto;
+
+    background:#FFFFFF;
+
+    border-radius:22px;
+
+    padding:45px;
 
     border:1px solid #ECECEC;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.06);
+
+}
+
+.topo-carrinho{
+
+    margin-bottom:35px;
 
 }
 
@@ -387,96 +650,57 @@ CARRINHO
 
     color:#2F4F3E;
 
-    font-size:34px;
-
-    margin-bottom:35px;
+    font-size:36px;
 
 }
 
-/*=========================================
-RODAPÉ
-=========================================*/
-
-.footer{
-
-    background:#FFFFFF;
-
-    border-top:1px solid #ECECEC;
-
-    padding:70px 0;
-
-    text-align:center;
-
-}
-
-.footer h3{
-
-    color:#2F4F3E;
-
-    font-size:28px;
-
-    margin-bottom:12px;
-
-}
-
-.footer p{
-
-    color:#777;
-
-}
-
-.footer span{
-
-    color:#999;
-
-    font-size:14px;
-
-}
-
-/*=========================================
-RESPONSIVO
-=========================================*/
-
-@media(max-width:768px){
-
-    .produto-info{
+.lista-pedido{
 
     display:flex;
 
-    justify-content:space-between;
+    flex-direction:column;
 
-    align-items:center;
-
-}
-
-.produto-info h3{
-
-    font-size:28px;
-
-    color:#2F4F3E;
-
-    margin-bottom:8px;
+    gap:20px;
 
 }
 
-.preco{
+.carrinho-vazio{
 
-    font-size:26px;
+    color:#888;
 
-    color:#C89A2B;
+    text-align:center;
 
-    font-weight:bold;
+    padding:40px 0;
+
+    font-size:18px;
 
 }
-    .item-pedido{
+
+/*==================================================
+ITEM PEDIDO
+==================================================*/
+
+.item-pedido{
+
+    position:relative;
+
+    background:#FAFAFA;
+
+    border:1px solid #ECECEC;
+
+    border-radius:18px;
 
     padding:25px;
 
-    border:1px solid #EEE;
+    transition:.3s;
 
-    border-radius:15px;
+}
 
-    margin-bottom:20px;
+.item-pedido:hover{
+
+    background:#FFFFFF;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
 
 }
 
@@ -494,6 +718,298 @@ RESPONSIVO
 
     margin-bottom:8px;
 
-    color:#555;
+    color:#666;
+
+    font-size:15px;
+
+}
+
+.item-pedido strong{
+
+    color:#2F4F3E;
+
+}
+
+.btn-remover{
+
+    position:absolute;
+
+    top:20px;
+
+    right:20px;
+
+    width:40px;
+
+    height:40px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#FFECEC;
+
+    color:#D9534F;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+.btn-remover:hover{
+
+    background:#D9534F;
+
+    color:#FFF;
+
+}
+
+/*==================================================
+TOTAL
+==================================================*/
+
+.rodape-carrinho{
+
+    margin-top:45px;
+
+    padding-top:30px;
+
+    border-top:1px solid #ECECEC;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.total{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.total span{
+
+    color:#888;
+
+    font-size:16px;
+
+}
+
+.total strong{
+
+    font-size:38px;
+
+    color:#2F4F3E;
+
+    margin-top:5px;
+
+}
+
+/*==================================================
+FOOTER
+==================================================*/
+
+.footer{
+
+    margin-top:80px;
+
+    background:#FFFFFF;
+
+    border-top:1px solid #ECECEC;
+
+    padding:60px 20px;
+
+    text-align:center;
+
+}
+
+.footer h3{
+
+    font-size:30px;
+
+    color:#2F4F3E;
+
+    margin-bottom:10px;
+
+}
+
+.footer p{
+
+    color:#777;
+
+    margin-bottom:8px;
+
+}
+
+.footer span{
+
+    color:#999;
+
+    font-size:14px;
+
+}
+
+/*==================================================
+SCROLL
+==================================================*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#F3F3F3;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#C7C7C7;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#9C9C9C;
+
+}
+
+/*==================================================
+RESPONSIVO
+==================================================*/
+
+@media(max-width:992px){
+
+    .produto-info{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:20px;
+
+    }
+
+    .btn-escolher{
+
+        width:100%;
+
+    }
+
+    .rodape-carrinho{
+
+        flex-direction:column;
+
+        gap:25px;
+
+        align-items:flex-start;
+
+    }
+
+    .btn-finalizar{
+
+        width:100%;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .header{
+
+        padding:30px 0;
+
+    }
+
+    .logo h1{
+
+        font-size:36px;
+
+    }
+
+    .hero{
+
+        padding:70px 0;
+
+    }
+
+    .hero h2{
+
+        font-size:38px;
+
+    }
+
+    .hero p{
+
+        font-size:17px;
+
+    }
+
+    .titulo h2{
+
+        font-size:34px;
+
+    }
+
+    .produto-card{
+
+        padding:25px;
+
+    }
+
+    .produto-info h3{
+
+        font-size:22px;
+
+    }
+
+    .preco{
+
+        font-size:22px;
+
+    }
+
+    .modal-box{
+
+        padding:25px;
+
+    }
+
+    .grupo-checkbox{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .carrinho{
+
+        padding:25px;
+
+    }
+
+    .topo-carrinho h2{
+
+        font-size:28px;
+
+    }
+
+    .total strong{
+
+        font-size:30px;
+
+    }
 
 }
