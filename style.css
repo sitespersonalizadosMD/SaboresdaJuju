@@ -48,13 +48,13 @@ HEADER
 
 .header{
 
-    background:#294936;
+    width:100%;
 
-    padding:25px 0;
+    background:#FFFFFF;
 
-    color:#fff;
+    padding:70px 0;
 
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    border-bottom:1px solid #ECECEC;
 
 }
 
@@ -62,25 +62,35 @@ HEADER
 
     display:flex;
 
+    flex-direction:column;
+
     align-items:center;
 
-    gap:18px;
+    justify-content:center;
+
+    text-align:center;
+
+    gap:15px;
 
 }
 
 .logo h1{
 
-    font-size:32px;
+    font-size:54px;
+
+    color:#2F4F3E;
 
     font-weight:700;
+
+    letter-spacing:1px;
 
 }
 
 .logo span{
 
-    color:#d9d9d9;
+    font-size:18px;
 
-    font-size:15px;
+    color:#777;
 
 }
 
@@ -90,31 +100,37 @@ CARDÁPIO
 
 .cardapio{
 
-    padding:60px 0;
+    width:100%;
+
+    background:#FAFAFA;
+
+    padding:90px 0;
 
 }
 
 .titulo{
 
-    text-align:center;
+    margin-bottom:60px;
 
-    margin-bottom:45px;
+    text-align:center;
 
 }
 
 .titulo h2{
 
-    font-size:38px;
+    font-size:42px;
 
-    color:#294936;
+    color:#2F4F3E;
 
-    margin-bottom:10px;
+    margin-bottom:15px;
 
 }
 
 .titulo p{
 
-    color:#666;
+    font-size:18px;
+
+    color:#777;
 
 }
 
@@ -124,11 +140,13 @@ LISTA PRODUTOS
 
 .lista-produtos{
 
+    width:100%;
+
     display:flex;
 
     flex-direction:column;
 
-    gap:20px;
+    gap:30px;
 
 }
 
@@ -138,13 +156,15 @@ CARD PRODUTO
 
 .produto-card{
 
-    background:#fff;
+    width:100%;
 
-    border-radius:16px;
+    background:#FFF;
 
-    padding:25px;
+    border-radius:18px;
 
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    padding:35px;
+
+    border:1px solid #ECECEC;
 
     transition:.3s;
 
@@ -154,35 +174,7 @@ CARD PRODUTO
 
     transform:translateY(-4px);
 
-}
-
-.produto-info{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:20px;
-
-}
-
-.produto-info h3{
-
-    font-size:22px;
-
-    color:#294936;
-
-}
-
-.preco{
-
-    font-size:18px;
-
-    font-weight:700;
-
-    color:#D4A017;
+    box-shadow:0 20px 40px rgba(0,0,0,.08);
 
 }
 
@@ -196,23 +188,25 @@ BOTÕES
 
 .btn-finalizar{
 
-    background:#294936;
+    min-width:180px;
 
-    color:#fff;
+    height:55px;
 
     border:none;
 
-    padding:14px 28px;
+    border-radius:12px;
 
-    border-radius:10px;
+    background:#2F4F3E;
+
+    color:#FFF;
+
+    font-size:16px;
+
+    font-weight:600;
 
     cursor:pointer;
 
     transition:.3s;
-
-    font-size:15px;
-
-    font-weight:600;
 
 }
 
@@ -222,7 +216,7 @@ BOTÕES
 
 .btn-finalizar:hover{
 
-    background:#1D3224;
+    background:#C89A2B;
 
 }
 /*=========================================
@@ -375,111 +369,27 @@ CARRINHO
 
 .carrinho{
 
-    width:100%;
-
     max-width:1100px;
 
-    margin:50px auto;
+    margin:70px auto;
 
-    background:#fff;
+    background:#FFF;
 
     border-radius:20px;
 
-    padding:30px;
+    padding:40px;
 
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-
-}
-
-.topo-carrinho{
-
-    margin-bottom:25px;
+    border:1px solid #ECECEC;
 
 }
 
-.lista-pedido{
+.topo-carrinho h2{
 
-    display:flex;
+    color:#2F4F3E;
 
-    flex-direction:column;
+    font-size:34px;
 
-    gap:20px;
-
-}
-
-.item-pedido{
-
-    border:1px solid #eee;
-
-    border-radius:12px;
-
-    padding:18px;
-
-    position:relative;
-
-}
-
-.item-pedido h4{
-
-    color:#294936;
-
-    margin-bottom:10px;
-
-}
-
-.item-pedido p{
-
-    margin-bottom:6px;
-
-    color:#555;
-
-}
-
-.btn-remover{
-
-    position:absolute;
-
-    right:15px;
-
-    top:15px;
-
-    background:none;
-
-    border:none;
-
-    cursor:pointer;
-
-    font-size:18px;
-
-}
-
-.rodape-carrinho{
-
-    margin-top:30px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-}
-
-.total{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:6px;
-
-}
-
-.total strong{
-
-    color:#294936;
-
-    font-size:24px;
+    margin-bottom:35px;
 
 }
 
@@ -489,33 +399,35 @@ RODAPÉ
 
 .footer{
 
-    background:#294936;
+    background:#FFFFFF;
 
-    color:#fff;
+    border-top:1px solid #ECECEC;
+
+    padding:70px 0;
 
     text-align:center;
-
-    padding:40px 20px;
-
-    margin-top:60px;
 
 }
 
 .footer h3{
 
-    margin-bottom:10px;
+    color:#2F4F3E;
+
+    font-size:28px;
+
+    margin-bottom:12px;
 
 }
 
 .footer p{
 
-    margin-bottom:8px;
+    color:#777;
 
 }
 
 .footer span{
 
-    color:#ccc;
+    color:#999;
 
     font-size:14px;
 
@@ -529,48 +441,59 @@ RESPONSIVO
 
     .produto-info{
 
-        flex-direction:column;
+    display:flex;
 
-        align-items:flex-start;
+    justify-content:space-between;
 
-    }
+    align-items:center;
 
-    .rodape-carrinho{
+}
 
-        flex-direction:column;
+.produto-info h3{
 
-        gap:20px;
+    font-size:28px;
 
-        align-items:flex-start;
+    color:#2F4F3E;
 
-    }
+    margin-bottom:8px;
 
-    .btn-escolher,
+}
 
-    .btn-principal,
+.preco{
 
-    .btn-finalizar{
+    font-size:26px;
 
-        width:100%;
+    color:#C89A2B;
 
-    }
+    font-weight:bold;
 
-    .logo{
+}
+    .item-pedido{
 
-        justify-content:center;
+    padding:25px;
 
-        text-align:center;
+    border:1px solid #EEE;
 
-    }
+    border-radius:15px;
 
-    .logo div{
+    margin-bottom:20px;
 
-        display:flex;
+}
 
-        flex-direction:column;
+.item-pedido h4{
 
-        align-items:center;
+    color:#2F4F3E;
 
-    }
+    font-size:24px;
+
+    margin-bottom:15px;
+
+}
+
+.item-pedido p{
+
+    margin-bottom:8px;
+
+    color:#555;
 
 }
