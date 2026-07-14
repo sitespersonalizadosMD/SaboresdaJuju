@@ -281,27 +281,21 @@ function obterDados(){
 
     ).value;
 
-    const pagamento=
+   return{
 
-    document.getElementById(
+    prato:pratoAtual,
 
-    "formaPagamento"
+    preco:precoAtual,
 
-    ).value;
+    acompanhamentos:
 
-    return{
+    acompanhamentosSelecionados,
 
-        acompanhamentos:acompanhamentosEscolhidos,
+    finalizacao,
 
-        finalizacao,
+    farofa
 
-        farofa,
-
-        pagamento
-
-    };
-
-}
+};
 /*=========================================
 ADICIONAR AO PEDIDO
 =========================================*/
