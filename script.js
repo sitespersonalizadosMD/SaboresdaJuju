@@ -375,6 +375,7 @@ function atualizarCarrinho(){
         `;
 
     }
+    const pagamento = document.getElementById("formaPagamento").value;
 
     pedido.forEach((item,index)=>{
 
@@ -519,6 +520,7 @@ finalizarPedido.addEventListener("click",()=>{
     });
 
     mensagem+=`TOTAL = R$ ${total.toFixed(2)}%0A`;
+    mensagem += `Pagamento: ${pagamento}%0A`;
 
     mensagem+=`PAGAMENTO ${pedido[0].pagamento}`;
 
