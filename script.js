@@ -471,6 +471,8 @@ finalizarPedido.addEventListener("click",()=>{
 
     }
 
+    const pagamento = document.getElementById("formaPagamento").value;
+
     let total=0;
 
     let mensagem="🍽️ *PEDIDO FINALIZADO*%0A%0A";
@@ -501,8 +503,6 @@ finalizarPedido.addEventListener("click",()=>{
 
     mensagem+=`TOTAL = R$ ${total.toFixed(2)}%0A`;
     mensagem += `Pagamento: ${pagamento}%0A`;
-
-    mensagem+=`PAGAMENTO ${pedido[0].pagamento}`;
 
     window.open(
 
