@@ -247,55 +247,34 @@ function limitarAcompanhamentos(){
 CAPTURAR DADOS
 =========================================*/
 
-function obterDados(){
+function obterDados() {
 
-    const acompanhamentosEscolhidos=[];
+    const acompanhamentosEscolhidos = [];
 
     document
+        .querySelectorAll(".grupo-checkbox input:checked")
+        .forEach(item => {
+            acompanhamentosEscolhidos.push(item.value);
+        });
 
-    .querySelectorAll(
+    const finalizacao =
+        document.querySelector(
+            'input[name="finalizacao"]:checked'
+        )?.value || "";
 
-    ".grupo-checkbox input:checked"
+    const farofa =
+        document.querySelector(
+            'input[name="farofa"]:checked'
+        ).value;
 
-    )
+    return {
+        prato: produtoAtual.nome,
+        preco: produtoAtual.preco,
+        acompanhamentos: acompanhamentosEscolhidos,
+        finalizacao,
+        farofa
+    };
 
-    .forEach(item=>{
-
-        acompanhamentosEscolhidos.push(item.value);
-
-    });
-
-    const finalizacao=
-
-    document.querySelector(
-
-    'input[name="finalizacao"]:checked'
-
-    )?.value || "";
-
-    const farofa=
-
-    document.querySelector(
-
-    'input[name="farofa"]:checked'
-
-    ).value;
-
-   return{
-
-    prato:pratoAtual,
-
-    preco:precoAtual,
-
-    acompanhamentos:
-
-    acompanhamentosSelecionados,
-
-    finalizacao,
-
-    farofa
-
-};
 }
 /*=========================================
 ADICIONAR AO PEDIDO
