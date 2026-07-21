@@ -11,15 +11,6 @@ import {
 
 console.log("admin.js carregado");
 
-import {
-    collection,
-    getDocs,
-    addDoc,
-    updateDoc,
-    deleteDoc,
-    doc
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
-
 const nome = document.getElementById("nome");
 const preco = document.getElementById("preco");
 const produtoId = document.getElementById("produtoId");
