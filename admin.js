@@ -1,3 +1,4 @@
+console.log("admin.js carregado");
 import { db } from "./js/firebase.js";
 
 import {
