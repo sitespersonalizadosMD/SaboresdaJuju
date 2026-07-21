@@ -292,9 +292,24 @@ finalizarPedidoModal.addEventListener("click", () => {
 
     const pagamento = document.getElementById("formaPagamentoModal").value;
 
+    const precisaTroco = document.getElementById("precisaTroco").value;
+
+const valorTroco = document.getElementById("valorTroco").value;
+
     if (pagamento === "") {
 
     alert("Selecione a forma de pagamento.");
+
+    return;
+
+}
+    if (
+    pagamento === "Dinheiro" &&
+    precisaTroco === "Sim" &&
+    valorTroco === ""
+) {
+
+    alert("Informe o valor para o troco.");
 
     return;
 
@@ -365,6 +380,34 @@ function atualizarTotalModal() {
 INICIALIZAÇÃO
 =========================================*/
 
-formaPagamentoModal.addEventListener("change", atualizarTotalModal);
+formaPagamentoModal.addEventListener("change", () => {
+
+    atualizarTotalModal();
+
+    const container = document.getElementById("trocoContainer");
+
+    if (formaPagamentoModal.value === "Dinheiro") {
+
+        container.style.display = "block";
+
+    } else {
+
+        container.style.display = "none";
+
+    }
+
+});
 
 renderizarProdutos();
+const precisaTroco = document.getElementById("precisaTroco");
+
+const valorTroco = document.getElementById("valorTroco");
+
+precisaTroco.addEventListener("change", () => {
+
+    valorTroco.style.display =
+        precisaTroco.value === "Sim"
+            ? "block"
+            : "none";
+
+});
