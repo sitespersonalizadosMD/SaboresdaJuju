@@ -308,6 +308,14 @@ finalizarPedidoModal.addEventListener("click", () => {
 
     const pagamento = document.getElementById("formaPagamentoModal").value;
 
+    if (pagamento === "") {
+
+    alert("Selecione a forma de pagamento.");
+
+    return;
+
+}
+
     const taxa = pagamento === "Alimentação/Refeição" ? 2 : 0;
 
 const total = produtoAtual.preco + taxa;
