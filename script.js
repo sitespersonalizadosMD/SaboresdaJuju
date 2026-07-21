@@ -14,6 +14,10 @@ const precoPrato = document.getElementById("precoPrato");
 
 const finalizarPedidoModal = document.getElementById("finalizarPedidoModal");
 
+const formaPagamentoModal = document.getElementById("formaPagamentoModal");
+
+const valorTotalModal = document.getElementById("valorTotalModal");
+
 /*=========================================
 VARIÁVEIS
 =========================================*/
@@ -84,6 +88,8 @@ ABRIR MODAL
 function abrirModal(produto){
 
     produtoAtual = produto;
+
+    atualizarTotalModal();
 
     tituloPrato.innerText = produto.nome;
 
@@ -343,8 +349,26 @@ mensagem += `%0A*Total:* R$ ${total.toFixed(2)}`;
     modal.classList.remove("ativo");
 
 });
+
+function atualizarTotalModal() {
+
+    if (!produtoAtual) return;
+
+    let total = produtoAtual.preco;
+
+    if (formaPagamentoModal.value === "Alimentação/Refeição") {
+
+        total += 2;
+
+    }
+
+    valorTotalModal.innerText = `Total: R$ ${total.toFixed(2)}`;
+
+}
 /*=========================================
 INICIALIZAÇÃO
 =========================================*/
+
+formaPagamentoModal.addEventListener("change", atualizarTotalModal);
 
 renderizarProdutos();
