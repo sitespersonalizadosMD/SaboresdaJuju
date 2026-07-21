@@ -42,11 +42,7 @@ const acompanhamentos = [
 
     "Arroz Branco",
 
-    "Arroz Integral",
-
     "Feijão Preto",
-
-    "Feijão Mulatinho",
 
     "Macarrão"
 
