@@ -30,56 +30,59 @@ const listaProdutos = document.getElementById("listaProdutos");
 
 async function carregarProdutos() {
 
-    listaProdutos.innerHTML = "";
+    try {
 
-    const snapshot = await getDocs(collection(db, "produtos"));
+        listaProdutos.innerHTML = "";
 
-    snapshot.forEach((item) => {
+        const snapshot = await getDocs(collection(db, "produtos"));
 
-        const produto = item.data();
+        console.log("Quantidade:", snapshot.size);
 
-        listaProdutos.innerHTML += `
+        snapshot.forEach((item) => {
 
-        <tr>
+            const produto = item.data();
 
-            <td>${produto.nome}</td>
+            listaProdutos.innerHTML += `
+                <tr>
+                    <td>${produto.nome}</td>
+                    <td>R$ ${Number(produto.preco).toFixed(2)}</td>
+                    <td>
 
-            <td>R$ ${Number(produto.preco).toFixed(2)}</td>
+                        <button
+                            class="editar"
+                            onclick="editarProduto(
+                                '${item.id}',
+                                '${produto.nome}',
+                                '${produto.preco}'
+                            )">
 
-            <td>
+                            Editar
 
-                <button
-                    class="editar"
-                    onclick="editarProduto(
-                        '${item.id}',
-                        '${produto.nome}',
-                        '${produto.preco}'
-                    )">
+                        </button>
 
-                    Editar
+                        <button
+                            class="excluir"
+                            onclick="excluirProduto(
+                                '${item.id}'
+                            )">
 
-                </button>
+                            Excluir
 
-                <button
-                    class="excluir"
-                    onclick="excluirProduto(
-                        '${item.id}'
-                    )">
+                        </button>
 
-                    Excluir
+                    </td>
+                </tr>
+            `;
 
-                </button>
+        });
 
-            </td>
+    } catch (erro) {
 
-        </tr>
+        console.error("Erro Firestore:", erro);
 
-        `;
-
-    });
+    }
 
 }
-
 btnSalvar.addEventListener("click", async () => {
 
     if (nome.value.trim() === "") {
