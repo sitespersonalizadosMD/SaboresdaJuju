@@ -5,246 +5,87 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>
-
-        Painel • Sabores da Juju
-
-    </title>
-
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
+    <title>Painel Administrativo</title>
 
     <link rel="stylesheet" href="admin.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<div class="painel">
+    <div class="container">
 
-    <!-- MENU -->
+        <h1>Painel Administrativo</h1>
 
-    <aside class="menu">
+        <div class="formulario">
 
-        <h2>
+            <input
+                type="hidden"
+                id="produtoId">
 
-            🍽️ Sabores da Juju
+            <label>
 
-        </h2>
+                Nome do prato
 
-        <ul>
+            </label>
 
-            <li class="ativo">
+            <input
+                type="text"
+                id="nome">
 
-                Dashboard
+            <label>
 
-            </li>
+                Preço
 
-            <li>
+            </label>
 
-                Pratos
+            <input
+                type="number"
+                id="preco"
+                step="0.01">
 
-            </li>
+            <button id="btnSalvar">
 
-            <li>
+                Salvar
 
-                Acompanhamentos
+            </button>
 
-            </li>
+        </div>
 
-            <li>
+        <hr>
 
-                Finalizações
+        <h2>Pratos cadastrados</h2>
 
-            </li>
+        <table>
 
-            <li>
+            <thead>
 
-                Configurações
+                <tr>
 
-            </li>
+                    <th>Nome</th>
 
-        </ul>
+                    <th>Preço</th>
 
-    </aside>
+                    <th>Ações</th>
 
-    <!-- CONTEÚDO -->
+                </tr>
 
-    <main class="conteudo">
+            </thead>
 
-        <h1>
+            <tbody id="listaProdutos">
 
-            Dashboard
+            </tbody>
 
-        </h1>
-
-        <!-- CARDS -->
-
-        <section class="cards">
-
-            <div class="card">
-
-                <h3>
-
-                    Pratos
-
-                </h3>
-
-                <span id="totalPratos">
-
-                    0
-
-                </span>
-
-            </div>
-
-            <div class="card">
-
-                <h3>
-
-                    Acompanhamentos
-
-                </h3>
-
-                <span id="totalAcompanhamentos">
-
-                    0
-
-                </span>
-
-            </div>
-
-            <div class="card">
-
-                <h3>
-
-                    Finalizações
-
-                </h3>
-
-                <span id="totalFinalizacoes">
-
-                    0
-
-                </span>
-
-            </div>
-
-            <!--=========================================
-MODAL NOVO / EDITAR PRATO
-==========================================-->
-
-<div
-    id="modalPrato"
-    class="modal">
-
-    <div class="modal-box">
-
-        <h2 id="tituloModal">
-
-            Novo Prato
-
-        </h2>
-
-        <input
-            type="text"
-            id="nomePrato"
-            placeholder="Nome do prato">
-
-        <input
-            type="number"
-            id="precoPrato"
-            placeholder="Preço">
-
-        <textarea
-            id="descricaoPrato"
-            placeholder="Descrição (opcional)"></textarea>
-
-        <button
-            id="salvarPrato">
-
-            Salvar Prato
-
-        </button>
+        </table>
 
     </div>
 
-</div>
-
-<script src="admin.js"></script>
+    <script type="module" src="admin.js"></script>
 
 </body>
 
 </html>
-
-        </section>
-
-        <!-- TABELA -->
-
-        <section class="tabela">
-
-            <div class="topo-tabela">
-
-                <h2>
-
-                    Pratos Cadastrados
-
-                </h2>
-
-                <button id="novoPrato">
-
-                    + Novo Prato
-
-                </button>
-
-            </div>
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>
-
-                            Nome
-
-                        </th>
-
-                        <th>
-
-                            Valor
-
-                        </th>
-
-                        <th>
-
-                            Ações
-
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody id="listaPratos">
-
-                </tbody>
-
-            </table>
-
-        </section>
-
-    </main>
-
-</div>
