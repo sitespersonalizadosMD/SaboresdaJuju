@@ -302,6 +302,10 @@ finalizarPedidoModal.addEventListener("click", () => {
 
     const pagamento = document.getElementById("formaPagamentoModal").value;
 
+    const taxa = pagamento === "Alimentação/Refeição" ? 2 : 0;
+
+const total = produtoAtual.preco + taxa;
+
     let mensagem = "🍽️ *PEDIDO*%0A%0A";
 
     mensagem += `*Prato:* ${produtoAtual.nome}%0A%0A`;
@@ -320,7 +324,13 @@ finalizarPedidoModal.addEventListener("click", () => {
 
     mensagem += `*Pagamento:* ${pagamento}%0A`;
 
-    mensagem += `%0A*Total:* R$ ${produtoAtual.preco.toFixed(2)}`;
+    if (taxa > 0) {
+
+    mensagem += `*Taxa Alimentação/Refeição:* R$ ${taxa.toFixed(2)}%0A`;
+
+}
+
+mensagem += `%0A*Total:* R$ ${total.toFixed(2)}`;
 
     window.open(
 
