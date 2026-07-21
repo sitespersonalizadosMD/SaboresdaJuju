@@ -290,14 +290,6 @@ finalizarPedidoModal.addEventListener("click", () => {
 
     const dados = obterDados();
 
-    if (dados.finalizacao === "") {
-
-        alert("Escolha uma finalização.");
-
-        return;
-
-    }
-
     const pagamento = document.getElementById("formaPagamentoModal").value;
 
     if (pagamento === "") {
@@ -324,7 +316,11 @@ const total = produtoAtual.preco + taxa;
 
     });
 
+   if (dados.finalizacao !== "") {
+
     mensagem += `%0A*Finalização:* ${dados.finalizacao}%0A`;
+
+}
 
     mensagem += `*Farofa:* ${dados.farofa}%0A`;
 
