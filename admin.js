@@ -1,5 +1,15 @@
-console.log("admin.js carregado");
 import { db } from "./js/firebase.js";
+
+import {
+    collection,
+    getDocs,
+    addDoc,
+    updateDoc,
+    deleteDoc,
+    doc
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+console.log("admin.js carregado");
 
 import {
     collection,
