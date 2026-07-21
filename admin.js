@@ -1,156 +1,59 @@
-/*=========================================
-LOGIN
-=========================================*/
+import { db } from "./js/firebase.js";
 
-const formLogin = document.getElementById("formLogin");
+import {
+    collection,
+    getDocs,
+    addDoc,
+    updateDoc,
+    deleteDoc,
+    doc
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-if(formLogin){
+const nome = document.getElementById("nome");
+const preco = document.getElementById("preco");
+const produtoId = document.getElementById("produtoId");
 
-    const usuario = "admin";
+const btnSalvar = document.getElementById("btnSalvar");
 
-    const senha = "123456";
+const listaProdutos = document.getElementById("listaProdutos");
 
-    formLogin.addEventListener("submit",(e)=>{
+async function carregarProdutos() {
 
-        e.preventDefault();
+    listaProdutos.innerHTML = "";
 
-        const user = document.getElementById("usuario").value;
+    const snapshot = await getDocs(collection(db, "produtos"));
 
-        const pass = document.getElementById("senha").value;
+    snapshot.forEach((item) => {
 
-        if(user===usuario && pass===senha){
+        const produto = item.data();
 
-            window.location.href="admin.html";
-
-        }else{
-
-            alert("Usuário ou senha inválidos.");
-
-        }
-
-    });
-
-}
-
-/*=========================================
-BANCO LOCAL
-=========================================*/
-
-let pratos = JSON.parse(localStorage.getItem("pratos")) || [
-
-    {
-        id:1,
-        nome:"Bife à Cavalo",
-        preco:22,
-        descricao:""
-    },
-
-    {
-        id:2,
-        nome:"Frango à Parmegiana",
-        preco:18,
-        descricao:""
-    },
-
-    {
-        id:3,
-        nome:"Frango Acebolado",
-        preco:18,
-        descricao:""
-    },
-
-    {
-        id:4,
-        nome:"Frango à Milanesa",
-        preco:18,
-        descricao:""
-    },
-
-    {
-        id:5,
-        nome:"Omelete",
-        preco:16,
-        descricao:""
-    },
-
-    {
-        id:6,
-        nome:"Calabresa Acebolada",
-        preco:16,
-        descricao:""
-    }
-
-];
-
-function salvarBanco(){
-
-    localStorage.setItem(
-
-        "pratos",
-
-        JSON.stringify(pratos)
-
-    );
-
-}
-
-/*=========================================
-ELEMENTOS
-=========================================*/
-
-const listaPratos = document.getElementById("listaPratos");
-
-const totalPratos = document.getElementById("totalPratos");
-
-const totalAcompanhamentos = document.getElementById("totalAcompanhamentos");
-
-const totalFinalizacoes = document.getElementById("totalFinalizacoes");
-
-/*=========================================
-RENDERIZAR TABELA
-=========================================*/
-
-function renderizarTabela(){
-
-    if(!listaPratos) return;
-
-    listaPratos.innerHTML="";
-
-    pratos.forEach((prato,index)=>{
-
-        listaPratos.innerHTML += `
+        listaProdutos.innerHTML += `
 
         <tr>
 
-            <td>
+            <td>${produto.nome}</td>
 
-                ${prato.nome}
-
-            </td>
-
-            <td>
-
-                R$ ${Number(prato.preco).toFixed(2)}
-
-            </td>
+            <td>R$ ${Number(produto.preco).toFixed(2)}</td>
 
             <td>
 
                 <button
-
                     class="editar"
-
-                    data-id="${index}">
+                    onclick="editarProduto(
+                        '${item.id}',
+                        '${produto.nome}',
+                        '${produto.preco}'
+                    )">
 
                     Editar
 
                 </button>
 
                 <button
-
                     class="excluir"
-
-                    data-id="${index}">
+                    onclick="excluirProduto(
+                        '${item.id}'
+                    )">
 
                     Excluir
 
@@ -164,132 +67,11 @@ function renderizarTabela(){
 
     });
 
-    atualizarDashboard();
-
-ativarEditar();
-
-ativarExcluir();
-
 }
 
-/*=========================================
-DASHBOARD
-=========================================*/
+btnSalvar.addEventListener("click", async () => {
 
-function atualizarDashboard(){
-
-    if(totalPratos){
-
-        totalPratos.innerText=pratos.length;
-
-    }
-
-    if(totalAcompanhamentos){
-
-        totalAcompanhamentos.innerText=5;
-
-    }
-
-    if(totalFinalizacoes){
-
-        totalFinalizacoes.innerText=3;
-
-    }
-
-}
-
-/*=========================================
-INICIALIZAÇÃO
-=========================================*/
-
-renderizarTabela();
-/*=========================================
-MODAL
-=========================================*/
-
-const modal = document.getElementById("modalPrato");
-
-const btnNovoPrato = document.getElementById("novoPrato");
-
-const btnSalvar = document.getElementById("salvarPrato");
-
-const nomePrato = document.getElementById("nomePrato");
-
-const precoPrato = document.getElementById("precoPrato");
-
-const descricaoPrato = document.getElementById("descricaoPrato");
-
-const tituloModal = document.getElementById("tituloModal");
-
-/*=========================================
-VARIÁVEIS
-=========================================*/
-
-let editando = false;
-
-let indiceEdicao = null;
-
-/*=========================================
-ABRIR MODAL
-=========================================*/
-
-if(btnNovoPrato){
-
-    btnNovoPrato.addEventListener("click",()=>{
-
-        limparFormulario();
-
-        editando=false;
-
-        indiceEdicao=null;
-
-        tituloModal.innerText="Novo Prato";
-
-        btnSalvar.innerText="Salvar Prato";
-
-        modal.classList.add("ativo");
-
-    });
-
-}
-
-/*=========================================
-FECHAR MODAL
-=========================================*/
-
-window.addEventListener("click",(e)=>{
-
-    if(e.target===modal){
-
-        modal.classList.remove("ativo");
-
-    }
-
-});
-
-/*=========================================
-LIMPAR FORMULÁRIO
-=========================================*/
-
-function limparFormulario(){
-
-    nomePrato.value="";
-
-    precoPrato.value="";
-
-    descricaoPrato.value="";
-
-}
-
-/*=========================================
-SALVAR
-=========================================*/
-
-if(btnSalvar){
-
-btnSalvar.addEventListener("click",()=>{
-
-    if(nomePrato.value===""){
+    if (nome.value.trim() === "") {
 
         alert("Informe o nome do prato.");
 
@@ -297,7 +79,7 @@ btnSalvar.addEventListener("click",()=>{
 
     }
 
-    if(precoPrato.value===""){
+    if (preco.value === "") {
 
         alert("Informe o preço.");
 
@@ -305,203 +87,76 @@ btnSalvar.addEventListener("click",()=>{
 
     }
 
-    const prato={
+    if (produtoId.value === "") {
 
-        id:Date.now(),
+        await addDoc(
 
-        nome:nomePrato.value,
+            collection(db, "produtos"),
 
-        preco:Number(precoPrato.value),
+            {
 
-        descricao:descricaoPrato.value
+                nome: nome.value,
 
-    };
+                preco: Number(preco.value),
 
-    if(editando){
-
-        prato.id=pratos[indiceEdicao].id;
-
-        pratos[indiceEdicao]=prato;
-
-    }else{
-
-        pratos.push(prato);
-
-    }
-
-    salvarBanco();
-
-    renderizarTabela();
-
-    limparFormulario();
-
-    modal.classList.remove("ativo");
-
-    editando=false;
-
-    indiceEdicao=null;
-
-});
-
-}
-
-/*=========================================
-EDITAR
-=========================================*/
-
-function ativarEditar(){
-
-    document
-
-    .querySelectorAll(".editar")
-
-    .forEach(botao=>{
-
-        botao.onclick=()=>{
-
-            indiceEdicao=Number(botao.dataset.id);
-
-            const prato=pratos[indiceEdicao];
-
-            nomePrato.value=prato.nome;
-
-            precoPrato.value=prato.preco;
-
-            descricaoPrato.value=prato.descricao;
-
-            tituloModal.innerText="Editar Prato";
-
-            btnSalvar.innerText="Atualizar";
-
-            editando=true;
-
-            modal.classList.add("ativo");
-
-        };
-
-    });
-
-}
-
-/*=========================================
-EXCLUIR
-=========================================*/
-
-function ativarExcluir(){
-
-    document
-
-    .querySelectorAll(".excluir")
-
-    .forEach(botao=>{
-
-        botao.onclick=()=>{
-
-            const indice=Number(botao.dataset.id);
-
-            if(confirm("Deseja excluir este prato?")){
-
-                pratos.splice(indice,1);
-
-                salvarBanco();
-
-                renderizarTabela();
+                ativo: true
 
             }
 
-        };
+        );
 
-    });
+    } else {
 
-}
-/*=========================================
-ACOMPANHAMENTOS
-=========================================*/
+        await updateDoc(
 
-let acompanhamentos = JSON.parse(
-    localStorage.getItem("acompanhamentos")
-) || [
+            doc(db, "produtos", produtoId.value),
 
-    "Arroz Branco",
+            {
 
-    "Arroz Integral",
+                nome: nome.value,
 
-    "Feijão Preto",
+                preco: Number(preco.value)
 
-    "Feijão Mulatinho",
+            }
 
-    "Macarrão"
+        );
 
-];
+    }
 
-/*=========================================
-FINALIZAÇÕES
-=========================================*/
+    produtoId.value = "";
 
-let finalizacoes = JSON.parse(
-    localStorage.getItem("finalizacoes")
-) || [
+    nome.value = "";
 
-    "Batata Frita",
+    preco.value = "";
 
-    "Salada Verde",
+    carregarProdutos();
 
-    "Purê de Batata"
+});
 
-];
+window.editarProduto = function(id, nomeProduto, precoProduto){
 
-/*=========================================
-CONFIGURAÇÕES
-=========================================*/
+    produtoId.value = id;
 
-let configuracoes = JSON.parse(
-    localStorage.getItem("configuracoes")
-) || {
+    nome.value = nomeProduto;
 
-    restaurante:"Sabores da Juju",
-
-    whatsapp:"5521979825876",
-
-    pix:""
-
-};
-
-/*=========================================
-SALVAR DADOS
-=========================================*/
-
-function salvarAcompanhamentos(){
-
-    localStorage.setItem(
-
-        "acompanhamentos",
-
-        JSON.stringify(acompanhamentos)
-
-    );
+    preco.value = precoProduto;
 
 }
 
-function salvarFinalizacoes(){
+window.excluirProduto = async function(id){
 
-    localStorage.setItem(
+    if(confirm("Excluir este prato?")){
 
-        "finalizacoes",
+        await deleteDoc(
 
-        JSON.stringify(finalizacoes)
+            doc(db,"produtos",id)
 
-    );
+        );
 
-}
+        carregarProdutos();
 
-function salvarConfiguracoes(){
-
-    localStorage.setItem(
-
-        "configuracoes",
-
-        JSON.stringify(configuracoes)
-
-    );
+    }
 
 }
+
+carregarProdutos();
