@@ -12,7 +12,7 @@ const tituloPrato = document.getElementById("tituloPrato");
 
 const precoPrato = document.getElementById("precoPrato");
 
-const adicionarPedido = document.getElementById("adicionarPedido");
+const finalizarPedidoModal = document.getElementById("finalizarPedidoModal");
 
 /*=========================================
 VARIÁVEIS
@@ -277,14 +277,14 @@ function obterDados() {
 
 }
 /*=========================================
-ADICIONAR AO PEDIDO
+FINALIZAR PEDIDO
 =========================================*/
 
-adicionarPedido.addEventListener("click",()=>{
+finalizarPedidoModal.addEventListener("click", () => {
 
     const dados = obterDados();
 
-    if(dados.acompanhamentos.length===0){
+    if (dados.acompanhamentos.length === 0) {
 
         alert("Escolha pelo menos um acompanhamento.");
 
@@ -292,7 +292,7 @@ adicionarPedido.addEventListener("click",()=>{
 
     }
 
-    if(dados.finalizacao===""){
+    if (dados.finalizacao === "") {
 
         alert("Escolha uma finalização.");
 
@@ -300,209 +300,27 @@ adicionarPedido.addEventListener("click",()=>{
 
     }
 
-    pedido.push({
+    const pagamento = document.getElementById("formaPagamentoModal").value;
 
-        prato:produtoAtual.nome,
+    let mensagem = "🍽️ *PEDIDO*%0A%0A";
 
-        preco:produtoAtual.preco,
+    mensagem += `*Prato:* ${produtoAtual.nome}%0A%0A`;
 
-        acompanhamentos:dados.acompanhamentos,
+    mensagem += "*Acompanhamentos:*%0A";
 
-        finalizacao:dados.finalizacao,
+    dados.acompanhamentos.forEach(item => {
 
-        farofa:dados.farofa,
-
-        pagamento:dados.pagamento
+        mensagem += `• ${item}%0A`;
 
     });
 
-    atualizarCarrinho();
+    mensagem += `%0A*Finalização:* ${dados.finalizacao}%0A`;
 
-    modal.classList.remove("ativo");
+    mensagem += `*Farofa:* ${dados.farofa}%0A`;
 
-});
+    mensagem += `*Pagamento:* ${pagamento}%0A`;
 
-/*=========================================
-ELEMENTOS DO CARRINHO
-=========================================*/
-
-const listaPedido = document.getElementById("listaPedido");
-
-const valorTotal = document.getElementById("valorTotal");
-
-const finalizarPedido = document.getElementById("finalizarPedido");
-
-/*=========================================
-ATUALIZAR CARRINHO
-=========================================*/
-
-function atualizarCarrinho(){
-
-    listaPedido.innerHTML="";
-
-    let total=0;
-
-    if(pedido.length===0){
-
-        listaPedido.innerHTML=`
-
-            <p class="carrinho-vazio">
-
-                Nenhum prato adicionado.
-
-            </p>
-
-        `;
-
-    }
-    const pagamento = document.getElementById("formaPagamento").value;
-
-    pedido.forEach((item,index)=>{
-
-        total+=item.preco;
-
-        const card=document.createElement("div");
-
-        card.className="item-pedido";
-
-        card.innerHTML=`
-
-            <button
-                class="btn-remover"
-                data-id="${index}">
-
-                🗑️
-
-            </button>
-
-            <h4>
-
-                ${item.prato}
-
-            </h4>
-
-            <p>
-
-                <strong>Acompanhamentos:</strong>
-
-                ${item.acompanhamentos.join(", ")}
-
-            </p>
-
-            <p>
-
-                <strong>Finalização:</strong>
-
-                ${item.finalizacao}
-
-            </p>
-
-            <p>
-
-                <strong>Farofa:</strong>
-
-                ${item.farofa}
-
-            </p>
-
-            <p>
-
-                <strong>Pagamento:</strong>
-
-                ${item.pagamento}
-
-            </p>
-
-            <strong>
-
-                R$ ${item.preco.toFixed(2)}
-
-            </strong>
-
-        `;
-
-        listaPedido.appendChild(card);
-
-    });
-
-    valorTotal.innerText=`R$ ${total.toFixed(2)}`;
-
-    ativarRemover();
-
-}
-
-/*=========================================
-REMOVER ITEM
-=========================================*/
-
-function ativarRemover(){
-
-    document
-
-    .querySelectorAll(".btn-remover")
-
-    .forEach(botao=>{
-
-        botao.addEventListener("click",()=>{
-
-            const indice=Number(botao.dataset.id);
-
-            pedido.splice(indice,1);
-
-            atualizarCarrinho();
-
-        });
-
-    });
-
-}
-
-/*=========================================
-FINALIZAR PEDIDO
-=========================================*/
-
-finalizarPedido.addEventListener("click",()=>{
-
-    if(pedido.length===0){
-
-        alert("Seu pedido está vazio.");
-
-        return;
-
-    }
-
-    const pagamento = document.getElementById("formaPagamento").value;
-
-    let total=0;
-
-    let mensagem="🍽️ *PEDIDO FINALIZADO*%0A%0A";
-
-    pedido.forEach(item=>{
-
-        total+=item.preco;
-
-        mensagem+=`${item.prato}%0A`;
-
-        item.acompanhamentos.forEach(ac=>{
-
-            mensagem+=`${ac}%0A`;
-
-        });
-
-        mensagem+=`${item.finalizacao}%0A`;
-
-        if(item.farofa==="Sim"){
-
-            mensagem+="Farofa%0A";
-
-        }
-
-        mensagem+="%0A";
-
-    });
-
-    mensagem+=`TOTAL = R$ ${total.toFixed(2)}%0A`;
-    mensagem += `Pagamento: ${pagamento}%0A`;
+    mensagem += `%0A*Total:* R$ ${produtoAtual.preco.toFixed(2)}`;
 
     window.open(
 
@@ -512,12 +330,11 @@ finalizarPedido.addEventListener("click",()=>{
 
     );
 
-});
+    modal.classList.remove("ativo");
 
+});
 /*=========================================
 INICIALIZAÇÃO
 =========================================*/
 
 renderizarProdutos();
-
-atualizarCarrinho();
