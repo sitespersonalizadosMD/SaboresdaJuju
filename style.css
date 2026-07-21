@@ -1013,3 +1013,50 @@ RESPONSIVO
     }
 
 }
+/*=========================================
+TROCO
+=========================================*/
+
+.troco-container{
+
+    margin-top:15px;
+
+}
+
+.troco-container label{
+
+    display:block;
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+}
+
+.troco-container select,
+
+.troco-container input{
+
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #ddd;
+
+    border-radius:8px;
+
+    font-size:16px;
+
+    font-family:'Poppins', sans-serif;
+
+    margin-bottom:12px;
+
+    box-sizing:border-box;
+
+}
+
+#valorTroco{
+
+    display:none;
+
+}
