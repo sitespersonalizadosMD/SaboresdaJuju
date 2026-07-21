@@ -341,6 +341,18 @@ const total = produtoAtual.preco + taxa;
 
     mensagem += `*Pagamento:* ${pagamento}%0A`;
 
+    if (pagamento === "Dinheiro") {
+
+    mensagem += `*Precisa de troco:* ${precisaTroco}%0A`;
+
+    if (precisaTroco === "Sim") {
+
+        mensagem += `*Troco para:* R$ ${Number(valorTroco).toFixed(2)}%0A`;
+
+    }
+
+}
+
     if (taxa > 0) {
 
     mensagem += `*Taxa Alimentação/Refeição:* R$ ${taxa.toFixed(2)}%0A`;
