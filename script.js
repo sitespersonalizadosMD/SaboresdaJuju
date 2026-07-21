@@ -290,14 +290,6 @@ finalizarPedidoModal.addEventListener("click", () => {
 
     const dados = obterDados();
 
-    if (dados.acompanhamentos.length === 0) {
-
-        alert("Escolha pelo menos um acompanhamento.");
-
-        return;
-
-    }
-
     if (dados.finalizacao === "") {
 
         alert("Escolha uma finalização.");
