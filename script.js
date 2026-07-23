@@ -478,21 +478,20 @@ async function carregarDados() {
 
     });
 
-    // Finalizações
-    const finalSnap = await getDocs(collection(db, "finalização"));
+   // Finalizações
+const finalSnap = await getDocs(collection(db, "finalização"));
 
-    finalSnap.forEach(doc => {
+finalSnap.forEach(doc => {
 
-        const dados = doc.data();
+    const dados = doc.data();
 
-        if (dados.ativo) {
+    if (dados.ativo) {
 
-            finalizacoes.push(dados.nome);
+        finalizacoes.push(dados.nome);
 
-        }
+    }
 
-    });
+});
 
-    carregarDados();
-
-}
+// Agora desenha os produtos na tela
+renderizarProdutos();
