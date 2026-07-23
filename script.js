@@ -499,3 +499,4 @@ finalSnap.forEach(doc => {
 // Agora desenha os produtos na tela
 renderizarProdutos();
     }
+carregarDados();
