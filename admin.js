@@ -68,19 +68,6 @@ function atualizarAbas() {
 
 function atualizarFormulario() {
 
-    if (colecaoAtual === "produtos") {
-
-        preco.parentElement.style.display = "block";
-
-    } else {
-
-        preco.parentElement.style.display = "none";
-
-        preco.value = "";
-
-    }
-
-}
 
 // =========================
 // CARREGAR DADOS
