@@ -1,5 +1,11 @@
 const produtos = [
 
+     {
+        id: 1,
+        nome: "Bife à Cavalo",
+        preco: 22
+    },
+
     {
         id: 2,
         nome: "Frango à Parmegiana",
