@@ -10,7 +10,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 // =========================
-// ELEMENTOS DA TELA
+// ELEMENTOS
 // =========================
 
 const nome = document.getElementById("nome");
@@ -25,6 +25,12 @@ const abaProdutos = document.getElementById("abaProdutos");
 const abaAcompanhamentos = document.getElementById("abaAcompanhamentos");
 const abaFinalizacoes = document.getElementById("abaFinalizacoes");
 
+const grupoPreco = document.getElementById("grupoPreco");
+const tituloTabela = document.getElementById("tituloTabela");
+const lblNome = document.getElementById("lblNome");
+
+const cabecalhoPreco = document.querySelector("thead tr th:nth-child(2)");
+
 // =========================
 // VARIÁVEIS
 // =========================
@@ -33,7 +39,7 @@ let colecaoAtual = "produtos";
 let registros = new Map();
 
 // =========================
-// ALTERA O VISUAL DAS ABAS
+// ABAS
 // =========================
 
 function atualizarAbas() {
@@ -63,20 +69,40 @@ function atualizarAbas() {
 }
 
 // =========================
-// MOSTRA OU ESCONDE PREÇO
+// FORMULÁRIO
 // =========================
 
 function atualizarFormulario() {
 
-    const grupoPreco = document.getElementById("grupoPreco");
-
     if (colecaoAtual === "produtos") {
 
         grupoPreco.style.display = "block";
+        cabecalhoPreco.style.display = "";
 
-    } else {
+        lblNome.textContent = "Nome do prato";
+        tituloTabela.textContent = "Pratos cadastrados";
+
+    }
+
+    if (colecaoAtual === "acompanhamentos") {
 
         grupoPreco.style.display = "none";
+        cabecalhoPreco.style.display = "none";
+
+        lblNome.textContent = "Nome do acompanhamento";
+        tituloTabela.textContent = "Acompanhamentos cadastrados";
+
+        preco.value = "";
+
+    }
+
+    if (colecaoAtual === "finalizacoes") {
+
+        grupoPreco.style.display = "none";
+        cabecalhoPreco.style.display = "none";
+
+        lblNome.textContent = "Nome da finalização";
+        tituloTabela.textContent = "Finalizações cadastradas";
 
         preco.value = "";
 
@@ -85,111 +111,79 @@ function atualizarFormulario() {
 }
 
 // =========================
-// CARREGAR DADOS
-// =========================
-
-async function carregarDados() {
-
-
-// =========================
-// CARREGAR DADOS
+// LISTAR
 // =========================
 
 async function carregarDados() {
 
     listaProdutos.innerHTML = "";
+
     registros.clear();
 
     atualizarAbas();
 
     atualizarFormulario();
 
-    function atualizarFormulario() {
+    const snapshot = await getDocs(
+        collection(db, colecaoAtual)
+    );
 
-    const grupoPreco = document.getElementById("grupoPreco");
+    snapshot.forEach((item) => {
 
-    if (colecaoAtual === "produtos") {
+        const dados = item.data();
 
-        grupoPreco.style.display = "block";
+        registros.set(item.id, dados);
 
-    } else {
+        let colunaPreco = "";
 
-        grupoPreco.style.display = "none";
+        if (colecaoAtual === "produtos") {
 
-        preco.value = "";
-
-    }
-
-}
-
-    try {
-
-        const snapshot = await getDocs(
-            collection(db, colecaoAtual)
-        );
-
-        snapshot.forEach((item) => {
-
-            const dados = item.data();
-            registros.set(item.id, dados);
-
-            let colunaPreco = "";
-
-            if (colecaoAtual === "produtos") {
-
-                colunaPreco =
-                    `<td>R$ ${Number(dados.preco).toFixed(2)}</td>`;
-
-            } else {
-
-                colunaPreco = `<td>-</td>`;
-
-            }
-
-            listaProdutos.innerHTML += `
-
-                <tr>
-
-                    <td>${dados.nome}</td>
-
-                    ${colunaPreco}
-
-                    <td>
-
-                        <button
-                            class="editar"
-                            onclick="editarRegistro('${item.id}')">
-
-                            Editar
-
-                        </button>
-
-                        <button
-                            class="excluir"
-                            onclick="excluirRegistro('${item.id}')">
-
-                            Excluir
-
-                        </button>
-
-                    </td>
-
-                </tr>
-
+            colunaPreco = `
+                <td>
+                    R$ ${Number(dados.preco).toFixed(2)}
+                </td>
             `;
 
-        });
+        }
 
-    } catch (erro) {
+        listaProdutos.innerHTML += `
 
-        console.error(erro);
+            <tr>
 
-    }
+                <td>${dados.nome}</td>
+
+                ${colunaPreco}
+
+                <td>
+
+                    <button
+                        class="editar"
+                        onclick="editarRegistro('${item.id}')">
+
+                        Editar
+
+                    </button>
+
+                    <button
+                        class="excluir"
+                        onclick="excluirRegistro('${item.id}')">
+
+                        Excluir
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+        `;
+
+    });
 
 }
 
 // =========================
-// EVENTOS DAS ABAS
+// TROCA DE ABAS
 // =========================
 
 abaProdutos.addEventListener("click", () => {
@@ -215,7 +209,6 @@ abaFinalizacoes.addEventListener("click", () => {
     carregarDados();
 
 });
-
 // =========================
 // INICIALIZAÇÃO
 // =========================
@@ -236,7 +229,7 @@ btnSalvar.addEventListener("click", async () => {
 
     }
 
-    if (colecaoAtual === "produtos" && preco.value === "") {
+    if (colecaoAtual === "produtos" && preco.value.trim() === "") {
 
         alert("Informe o preço.");
 
@@ -246,7 +239,8 @@ btnSalvar.addEventListener("click", async () => {
 
     const dados = {
 
-        nome: nome.value.trim()
+        nome: nome.value.trim(),
+        ativo: true
 
     };
 
@@ -256,82 +250,109 @@ btnSalvar.addEventListener("click", async () => {
 
     }
 
-    if (produtoId.value === "") {
+    try {
 
-        dados.ativo = true;
+        if (produtoId.value === "") {
 
-        await addDoc(
-            collection(db, colecaoAtual),
-            dados
-        );
+            await addDoc(
+                collection(db, colecaoAtual),
+                dados
+            );
 
-    } else {
+        } else {
 
-        await updateDoc(
+            await updateDoc(
 
-            doc(db, colecaoAtual, produtoId.value),
+                doc(db, colecaoAtual, produtoId.value),
 
-            dados
+                dados
 
-        );
+            );
+
+        }
+
+        produtoId.value = "";
+        nome.value = "";
+        preco.value = "";
+
+        nome.focus();
+
+        carregarDados();
+
+    } catch (erro) {
+
+        console.error(erro);
+
+        alert("Erro ao salvar.");
 
     }
 
-    produtoId.value = "";
-
-nome.value = "";
-
-preco.value = "";
-
-nome.focus();
-
-await carregarDados();
 });
 
 // =========================
 // EDITAR
 // =========================
 
-window.editarRegistro = function(id){
+window.editarRegistro = function (id) {
 
     const dados = registros.get(id);
 
-    if(!dados) return;
+    if (!dados) return;
 
     produtoId.value = id;
 
     nome.value = dados.nome;
 
-    if(colecaoAtual === "produtos"){
+    if (colecaoAtual === "produtos") {
 
         preco.value = dados.preco;
 
+    } else {
+
+        preco.value = "";
+
     }
 
-}
+    nome.focus();
+
+};
 
 // =========================
 // EXCLUIR
 // =========================
 
-window.excluirRegistro = async function(id){
+window.excluirRegistro = async function (id) {
 
-    if(!confirm("Deseja realmente excluir este registro?")){
+    if (!confirm("Deseja realmente excluir este registro?")) {
 
         return;
 
     }
 
-    await deleteDoc(
+    try {
 
-        doc(db, colecaoAtual, id)
+        await deleteDoc(
 
-    );
+            doc(db, colecaoAtual, id)
 
-   atualizarAbas();
+        );
 
-atualizarFormulario();
+        if (produtoId.value === id) {
 
-carregarDados();
+            produtoId.value = "";
+            nome.value = "";
+            preco.value = "";
 
-}
+        }
+
+        carregarDados();
+
+    } catch (erro) {
+
+        console.error(erro);
+
+        alert("Erro ao excluir.");
+
+    }
+
+};
