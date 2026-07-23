@@ -60,7 +60,7 @@ function atualizarAbas() {
 
     }
 
-    if (colecaoAtual === "finalizacoes") {
+    if (colecaoAtual === "finalização") {
 
         abaFinalizacoes.classList.add("ativo");
 
