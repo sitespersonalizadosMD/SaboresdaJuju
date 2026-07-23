@@ -117,3 +117,48 @@ th,td{
     background:#c62828;
 
 }
+.abas{
+
+    display:flex;
+
+    gap:10px;
+
+    margin:25px 0;
+
+}
+
+.abas button{
+
+    flex:1;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#ececec;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.abas button:hover{
+
+    background:#dcdcdc;
+
+}
+
+.abas button.ativo{
+
+    background:#2d7d46;
+
+    color:#fff;
+
+}
