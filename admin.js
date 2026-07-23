@@ -204,7 +204,7 @@ abaAcompanhamentos.addEventListener("click", () => {
 
 abaFinalizacoes.addEventListener("click", () => {
 
-    colecaoAtual = "finalizacoes";
+    colecaoAtual = "finalizacão";
 
     carregarDados();
 
