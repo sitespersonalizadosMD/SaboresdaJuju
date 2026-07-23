@@ -231,6 +231,20 @@ td button{
 =========================== */
 @media (max-width: 768px) {
 
+    tbody td{
+    padding:8px 6px;
+    vertical-align:middle;
+}
+
+tbody tr{
+    height:auto;
+}
+
+th,
+td{
+    white-space:nowrap;
+}
+
     body{
         padding:15px;
     }
@@ -277,11 +291,14 @@ td button{
         font-size:14px;
     }
 
-    td button{
-        display:block;
-        width:100%;
-        margin:5px 0;
-    }
+   td button{
+    display:inline-block;
+    width:auto;
+    min-width:80px;
+    margin:2px;
+    padding:8px 12px;
+    font-size:14px;
+}
 
 }
 
