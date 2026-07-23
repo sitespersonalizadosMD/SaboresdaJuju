@@ -1,3 +1,10 @@
+import { db } from "./js/firebase.js";
+
+import {
+    collection,
+    getDocs
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
 /*=========================================
 ELEMENTOS
 =========================================*/
@@ -25,6 +32,12 @@ VARIÁVEIS
 let pedido = [];
 
 let produtoAtual = null;
+
+let produtos = [];
+
+let acompanhamentos = [];
+
+let finalizacoes = [];
 
 /*=========================================
 RENDERIZAR PRODUTOS
@@ -423,3 +436,63 @@ precisaTroco.addEventListener("change", () => {
             : "none";
 
 });
+
+async function carregarDados() {
+
+    produtos = [];
+    acompanhamentos = [];
+    finalizacoes = [];
+
+    // Produtos
+    const produtosSnap = await getDocs(collection(db, "produtos"));
+
+    produtosSnap.forEach(doc => {
+
+        const dados = doc.data();
+
+        if (dados.ativo) {
+
+            produtos.push({
+
+                nome: dados.nome,
+                preco: dados.preco
+
+            });
+
+        }
+
+    });
+
+    // Acompanhamentos
+    const acompSnap = await getDocs(collection(db, "acompanhamentos"));
+
+    acompSnap.forEach(doc => {
+
+        const dados = doc.data();
+
+        if (dados.ativo) {
+
+            acompanhamentos.push(dados.nome);
+
+        }
+
+    });
+
+    // Finalizações
+    const finalSnap = await getDocs(collection(db, "finalizacoes"));
+
+    finalSnap.forEach(doc => {
+
+        const dados = doc.data();
+
+        if (dados.ativo) {
+
+            finalizacoes.push(dados.nome);
+
+        }
+
+    });
+
+    carregarDados();
+
+}
