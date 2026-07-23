@@ -438,7 +438,6 @@ precisaTroco.addEventListener("change", () => {
 });
 
 // Carrega tudo do Firebase
-carregarDados();
 
 async function carregarDados() {
 
