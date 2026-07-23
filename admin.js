@@ -96,7 +96,7 @@ function atualizarFormulario() {
 
     }
 
-    if (colecaoAtual === "finalizacoes") {
+    if (colecaoAtual === "finalização") {
 
         grupoPreco.style.display = "none";
         cabecalhoPreco.style.display = "none";
