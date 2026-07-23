@@ -82,6 +82,24 @@ async function carregarDados() {
 
     atualizarFormulario();
 
+    function atualizarFormulario() {
+
+    const grupoPreco = document.getElementById("grupoPreco");
+
+    if (colecaoAtual === "produtos") {
+
+        grupoPreco.style.display = "block";
+
+    } else {
+
+        grupoPreco.style.display = "none";
+
+        preco.value = "";
+
+    }
+
+}
+
     try {
 
         const snapshot = await getDocs(
