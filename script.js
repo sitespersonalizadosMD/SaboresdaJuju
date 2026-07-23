@@ -479,7 +479,7 @@ async function carregarDados() {
     });
 
     // Finalizações
-    const finalSnap = await getDocs(collection(db, "finalizacoes"));
+    const finalSnap = await getDocs(collection(db, "finalização"));
 
     finalSnap.forEach(doc => {
 
