@@ -422,8 +422,6 @@ formaPagamentoModal.addEventListener("change", () => {
     }
 
 });
-
-renderizarProdutos();
 const precisaTroco = document.getElementById("precisaTroco");
 
 const valorTroco = document.getElementById("valorTroco");
