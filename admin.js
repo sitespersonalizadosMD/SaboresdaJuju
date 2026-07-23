@@ -68,6 +68,28 @@ function atualizarAbas() {
 
 function atualizarFormulario() {
 
+    const grupoPreco = document.getElementById("grupoPreco");
+
+    if (colecaoAtual === "produtos") {
+
+        grupoPreco.style.display = "block";
+
+    } else {
+
+        grupoPreco.style.display = "none";
+
+        preco.value = "";
+
+    }
+
+}
+
+// =========================
+// CARREGAR DADOS
+// =========================
+
+async function carregarDados() {
+
 
 // =========================
 // CARREGAR DADOS
