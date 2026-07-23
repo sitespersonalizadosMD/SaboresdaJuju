@@ -29,7 +29,7 @@ const grupoPreco = document.getElementById("grupoPreco");
 const tituloTabela = document.getElementById("tituloTabela");
 const lblNome = document.getElementById("lblNome");
 
-const cabecalhoPreco = document.querySelector("thead tr th:nth-child(2)");
+const cabecalhoPreco = document.getElementById("colunaPreco");
 
 // =========================
 // VARIÁVEIS
