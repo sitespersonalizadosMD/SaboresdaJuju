@@ -226,5 +226,63 @@ td button{
     min-width:80px;
 
 }
+/* ===========================
+   RESPONSIVO
+=========================== */
+@media (max-width: 768px) {
+
+    body{
+        padding:15px;
+    }
+
+    .container{
+        width:100%;
+        padding:20px;
+    }
+
+    h1{
+        font-size:28px;
+        text-align:center;
+    }
+
+    h2{
+        font-size:20px;
+        text-align:center;
+    }
+
+    .abas{
+        flex-direction:column;
+    }
+
+    .abas button{
+        width:100%;
+    }
+
+    input{
+        width:100%;
+    }
+
+    #btnSalvar{
+        width:100%;
+    }
+
+    table{
+        display:block;
+        overflow-x:auto;
+    }
+
+    th,
+    td{
+        white-space:nowrap;
+        font-size:14px;
+    }
+
+    td button{
+        display:block;
+        width:100%;
+        margin:5px 0;
+    }
+
+}
 
 
