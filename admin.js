@@ -156,20 +156,18 @@ async function carregarDados() {
                 <td>
 
                     <button
-                        class="editar"
-                        onclick="editarRegistro('${item.id}')">
+    class="editar"
+    onclick="editarRegistro('${item.id}')">
+    Editar
+</button>
 
-                        Editar
+<button
+    class="${dados.ativo === false ? 'editar' : 'excluir'}"
+    onclick="alterarStatus('${item.id}')">
 
-                    </button>
+    ${dados.ativo === false ? 'Ativar' : 'Pausar'}
 
-                    <button
-                        class="excluir"
-                        onclick="excluirRegistro('${item.id}')">
-
-                        Excluir
-
-                    </button>
+</button>
 
                 </td>
 
