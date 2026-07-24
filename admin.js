@@ -357,31 +357,3 @@ window.alterarStatus = async function(id){
     }
 
 }
-
-    try {
-
-        await deleteDoc(
-
-            doc(db, colecaoAtual, id)
-
-        );
-
-        if (produtoId.value === id) {
-
-            produtoId.value = "";
-            nome.value = "";
-            preco.value = "";
-
-        }
-
-        carregarDados();
-
-    } catch (erro) {
-
-        console.error(erro);
-
-        alert("Erro ao excluir.");
-
-    }
-
-};
