@@ -450,16 +450,16 @@ async function carregarDados() {
 
         const dados = doc.data();
 
-        if (dados.ativo) {
+       if (dados.ativo !== false) {
 
-            produtos.push({
+    produtos.push({
 
-                nome: dados.nome,
-                preco: dados.preco
+        nome: dados.nome,
+        preco: dados.preco
 
-            });
+    });
 
-        }
+}
 
     });
 
