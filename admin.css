@@ -280,26 +280,50 @@ td{
         width:100%;
     }
 
-    table{
-        display:block;
-        overflow-x:auto;
-    }
+   table{
+    width:100%;
+    display:block;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+}
 
-    th,
-    td{
-        white-space:nowrap;
-        font-size:14px;
-    }
+thead,
+tbody{
+    width:100%;
+}
+
+th,
+td{
+    font-size:14px;
+    padding:8px;
+    white-space:normal;
+}
 
    td button{
     display:inline-block;
     width:auto;
-    min-width:80px;
+    min-width:70px;
+    padding:8px 10px;
     margin:2px;
-    padding:8px 12px;
-    font-size:14px;
+    font-size:13px;
 }
 
 }
+tbody td:first-child{
+    min-width:170px;
+    font-weight:500;
+}
 
+tbody td:nth-child(2){
+    width:90px;
+}
+
+tbody td:last-child{
+    width:160px;
+}
+
+.editar,
+.excluir{
+    display:inline-block;
+}
 
