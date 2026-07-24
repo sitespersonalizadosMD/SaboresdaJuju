@@ -149,7 +149,18 @@ async function carregarDados() {
 
             <tr>
 
-                <td>${dados.nome}</td>
+                <td>
+
+    ${dados.nome}
+
+    ${colecaoAtual === "produtos"
+        ? `<br><small style="color:${dados.ativo === false ? '#c62828' : '#2e7d32'}">
+            ${dados.ativo === false ? '🔴 Pausado' : '🟢 Ativo'}
+          </small>`
+        : ""
+    }
+
+</td>
 
                 ${colunaPreco}
 
@@ -318,13 +329,34 @@ window.editarRegistro = function (id) {
 // EXCLUIR
 // =========================
 
-window.excluirRegistro = async function (id) {
+window.alterarStatus = async function(id){
 
-    if (!confirm("Deseja realmente excluir este registro?")) {
+    const dados = registros.get(id);
 
-        return;
+    if(!dados) return;
+
+    try{
+
+        await updateDoc(
+
+            doc(db, colecaoAtual, id),
+
+            {
+                ativo: !(dados.ativo !== false)
+            }
+
+        );
+
+        carregarDados();
+
+    }catch(erro){
+
+        console.error(erro);
+        alert("Erro ao alterar o status.");
 
     }
+
+}
 
     try {
 
