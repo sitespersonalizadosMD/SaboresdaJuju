@@ -470,11 +470,11 @@ async function carregarDados() {
 
         const dados = doc.data();
 
-        if (dados.ativo) {
+        if (dados.ativo !== false) {
 
-            acompanhamentos.push(dados.nome);
+    acompanhamentos.push(dados.nome);
 
-        }
+}
 
     });
 
@@ -485,11 +485,11 @@ finalSnap.forEach(doc => {
 
     const dados = doc.data();
 
-    if (dados.ativo) {
+    if (dados.ativo !== false) {
 
-        finalizacoes.push(dados.nome);
+    finalizacoes.push(dados.nome);
 
-    }
+}
 
 });
 
