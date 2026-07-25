@@ -376,7 +376,7 @@ mensagem += `%0A*Total:* R$ ${total.toFixed(2)}`;
 
     window.open(
 
-        `https://wa.me/5521979825876?text=${mensagem}`,
+        `https://wa.me/5521979829876?text=${mensagem}`,
 
         "_blank"
 
