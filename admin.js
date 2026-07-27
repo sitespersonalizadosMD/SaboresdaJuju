@@ -1,10 +1,10 @@
-import { db } from "./js/firebase.js";
-
 import {
     collection,
     getDocs,
     addDoc,
     updateDoc,
+    deleteDoc,
+    getDoc,
     doc
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
@@ -29,6 +29,7 @@ const tituloTabela = document.getElementById("tituloTabela");
 const lblNome = document.getElementById("lblNome");
 
 const cabecalhoPreco = document.getElementById("colunaPreco");
+const btnSite = document.getElementById("btnSite");
 
 // =========================
 // VARIÁVEIS
