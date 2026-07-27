@@ -1,8 +1,8 @@
-import { db } from "./js/firebase.js";
-
 import {
     collection,
-    getDocs
+    getDocs,
+    doc,
+    getDoc
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 /*=========================================
@@ -438,6 +438,26 @@ precisaTroco.addEventListener("change", () => {
 // Carrega tudo do Firebase
 
 async function carregarDados() {
+
+    // Verifica se o site está ativo
+const config = await getDoc(doc(db, "configuracoes", "site"));
+
+if (config.exists() && config.data().ativo === false) {
+
+    document.body.innerHTML = `
+        <div class="offline">
+            <h1>🚧 Estamos temporariamente indisponíveis</h1>
+
+            <p>
+                Nosso cardápio está indisponível no momento.
+                <br><br>
+                Voltaremos em breve!
+            </p>
+        </div>
+    `;
+
+    return;
+}
 
     produtos = [];
     acompanhamentos = [];
