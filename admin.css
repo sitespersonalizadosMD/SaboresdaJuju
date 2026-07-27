@@ -326,4 +326,20 @@ tbody td:last-child{
 .excluir{
     display:inline-block;
 }
+/* =========================
+   CONFIGURAÇÕES DO SITE
+========================= */
 
+.configuracoes-site{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 40px auto;
+    text-align: center;
+}
+
+#btnSite{
+    display: block;
+    margin: 20px auto 0;
+}
