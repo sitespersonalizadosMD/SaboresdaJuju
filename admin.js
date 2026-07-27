@@ -218,11 +218,6 @@ abaFinalizacoes.addEventListener("click", () => {
     carregarDados();
 
 });
-// =========================
-// INICIALIZAÇÃO
-// =========================
-
-carregarDados();
 
 // =========================
 // SALVAR
@@ -358,3 +353,45 @@ window.alterarStatus = async function(id){
     }
 
 }
+// =========================
+// STATUS DO SITE
+// =========================
+
+async function carregarStatusSite() {
+
+    const config = await getDoc(
+        doc(db, "configuracoes", "site")
+    );
+
+    if (!config.exists()) return;
+
+    const ativo = config.data().ativo;
+
+    btnSite.textContent = ativo
+        ? "🟢 Site Online (Clique para desativar)"
+        : "🔴 Site Offline (Clique para ativar)";
+
+    btnSite.dataset.ativo = ativo;
+}
+
+btnSite.addEventListener("click", async () => {
+
+    const novoStatus = btnSite.dataset.ativo !== "true";
+
+    await updateDoc(
+        doc(db, "configuracoes", "site"),
+        {
+            ativo: novoStatus
+        }
+    );
+
+    carregarStatusSite();
+
+});
+
+// =========================
+// INICIALIZAÇÃO
+// =========================
+
+carregarDados();
+carregarStatusSite();
