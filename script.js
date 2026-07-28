@@ -486,6 +486,7 @@ if (config.exists() && config.data().ativo === false) {
     });
 
     // Acompanhamentos
+    produtos.sort((a, b) => a.ordem - b.ordem);
     const acompSnap = await getDocs(collection(db, "acompanhamentos"));
 
     acompSnap.forEach(doc => {
