@@ -154,6 +154,8 @@ async function carregarDados() {
 
         }
 
+        habilitarOrdenacao();
+
         listaProdutos.innerHTML += `
 
 <tr data-id="${item.id}">
