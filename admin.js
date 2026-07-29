@@ -197,6 +197,7 @@ async function carregarDados() {
 `; });
 
     habilitarOrdenacao();
+    }
 
         function habilitarOrdenacao() {
 
