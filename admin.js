@@ -292,10 +292,21 @@ btnSalvar.addEventListener("click", async () => {
 
     const dados = {
 
-        nome: nome.value.trim(),
-        ativo: true
+    nome: nome.value.trim()
 
-    };
+};
+
+if (produtoId.value === "") {
+
+    dados.ativo = true;
+
+} else {
+
+    const registroAtual = registros.get(produtoId.value);
+
+    dados.ativo = registroAtual?.ativo ?? true;
+
+}
 
     if (colecaoAtual === "produtos") {
 
@@ -305,14 +316,16 @@ btnSalvar.addEventListener("click", async () => {
 
     try {
 
-        if (produtoId.value === "") {
+if (produtoId.value === "") {
 
-            await addDoc(
-                collection(db, colecaoAtual),
-                dados
-            );
+    dados.ordem = listaProdutos.querySelectorAll("tr").length + 1;
 
-        } else {
+    await addDoc(
+        collection(db, colecaoAtual),
+        dados
+    );
+
+} else {
 
             await updateDoc(
 
