@@ -449,15 +449,21 @@ const config = await getDoc(doc(db, "configuracoes", "site"));
 if (config.exists() && config.data().ativo === false) {
 
     document.body.innerHTML = `
-        <div class="offline">
-            <h1>🚧 Estamos temporariamente indisponíveis</h1>
+    <div class="offline">
+        <div class="offline-card">
+
+            <div class="offline-icon">🚧</div>
+
+            <h1>Pedidos encerrados.</h1>
 
             <p>
-                Nosso cardápio está indisponível no momento.
-                <br><br>
-                Voltaremos em breve!
+                Nosso horário de atendimento é de
+                <strong>segunda a sexta</strong><br>
+                das <strong>8:00 às 11:00</strong>.
             </p>
+
         </div>
+    </div>
     `;
 
     return;
