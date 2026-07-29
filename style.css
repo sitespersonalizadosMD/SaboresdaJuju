@@ -1060,3 +1060,42 @@ TROCO
     display:none;
 
 }
+.offline{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f8f5ef;
+    padding:20px;
+}
+
+.offline-card{
+    background:#fff;
+    max-width:520px;
+    width:100%;
+    padding:50px 35px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.offline-icon{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.offline-card h1{
+    color:#6d2f16;
+    font-size:2rem;
+    margin-bottom:20px;
+}
+
+.offline-card p{
+    color:#555;
+    font-size:1.15rem;
+    line-height:1.8;
+}
+
+.offline-card strong{
+    color:#d97706;
+}
