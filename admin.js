@@ -150,48 +150,48 @@ async function carregarDados() {
 
         listaProdutos.innerHTML += `
 
-            <tr>
+<tr data-id="${item.id}">
 
-                <td>
+    <td style="width:40px;text-align:center;cursor:grab;" class="drag-handle">
+        ☰
+    </td>
 
-    ${dados.nome}
+    <td>
 
-    ${colecaoAtual === "produtos"
-        ? `<br><small style="color:${dados.ativo === false ? '#c62828' : '#2e7d32'}">
-            ${dados.ativo === false ? '🔴 Pausado' : '🟢 Ativo'}
-          </small>`
-        : ""
-    }
+        ${dados.nome}
 
-</td>
+        ${colecaoAtual === "produtos"
+            ? `<br><small style="color:${dados.ativo === false ? '#c62828' : '#2e7d32'}">
+                ${dados.ativo === false ? '🔴 Pausado' : '🟢 Ativo'}
+              </small>`
+            : ""
+        }
 
-                ${colunaPreco}
+    </td>
 
-                <td>
+    ${colunaPreco}
 
-                    <button
-    class="editar"
-    onclick="editarRegistro('${item.id}')">
-    Editar
-</button>
+    <td>
 
-<button
-    class="${dados.ativo === false ? 'editar' : 'excluir'}"
-    onclick="alterarStatus('${item.id}')">
+        <button
+            class="editar"
+            onclick="editarRegistro('${item.id}')">
+            Editar
+        </button>
 
-    ${dados.ativo === false ? 'Ativar' : 'Pausar'}
+        <button
+            class="${dados.ativo === false ? 'editar' : 'excluir'}"
+            onclick="alterarStatus('${item.id}')">
 
-</button>
+            ${dados.ativo === false ? 'Ativar' : 'Pausar'}
 
-                </td>
+        </button>
 
-            </tr>
+    </td>
 
-        `;
+</tr>
 
-    });
-
-}
+`;
 
 // =========================
 // TROCA DE ABAS
