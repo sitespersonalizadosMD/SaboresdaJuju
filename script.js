@@ -4,7 +4,9 @@ import {
     collection,
     getDocs,
     doc,
-    getDoc
+    getDoc,
+    query,
+    orderBy
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 /*=========================================
@@ -466,27 +468,31 @@ if (config.exists() && config.data().ativo === false) {
     finalizacoes = [];
 
     // Produtos
-    const produtosSnap = await getDocs(collection(db, "produtos"));
-
+   const produtosSnap = await getDocs(
+    query(
+        collection(db, "produtos"),
+        orderBy("ordem")
+    )
+);
     produtosSnap.forEach(doc => {
 
         const dados = doc.data();
 
        if (dados.ativo !== false) {
 
-    produtos.push({
+   produtos.push({
 
-        nome: dados.nome,
-        preco: dados.preco
+    nome: dados.nome,
+    preco: dados.preco,
+    ordem: dados.ordem
 
-    });
+});
 
 }
 
     });
 
     // Acompanhamentos
-    produtos.sort((a, b) => a.ordem - b.ordem);
     const acompSnap = await getDocs(collection(db, "acompanhamentos"));
 
     acompSnap.forEach(doc => {
