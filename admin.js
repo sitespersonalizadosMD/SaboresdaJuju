@@ -129,9 +129,24 @@ async function carregarDados() {
 
     atualizarFormulario();
 
-    const snapshot = await getDocs(
-    collection(db, colecaoAtual)
-);
+   let snapshot;
+
+if (colecaoAtual === "produtos") {
+
+    snapshot = await getDocs(
+        query(
+            collection(db, colecaoAtual),
+            orderBy("ordem")
+        )
+    );
+
+} else {
+
+    snapshot = await getDocs(
+        collection(db, colecaoAtual)
+    );
+
+}
 
     snapshot.forEach((item) => {
 
