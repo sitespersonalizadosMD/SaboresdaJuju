@@ -130,8 +130,11 @@ async function carregarDados() {
     atualizarFormulario();
 
     const snapshot = await getDocs(
-        collection(db, colecaoAtual)
-    );
+    query(
+        collection(db, colecaoAtual),
+        orderBy("ordem")
+    )
+);
 
     snapshot.forEach((item) => {
 
