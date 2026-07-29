@@ -130,10 +130,7 @@ async function carregarDados() {
     atualizarFormulario();
 
     const snapshot = await getDocs(
-    query(
-        collection(db, colecaoAtual),
-        orderBy("ordem")
-    )
+    collection(db, colecaoAtual)
 );
 
     snapshot.forEach((item) => {
@@ -153,8 +150,6 @@ async function carregarDados() {
             `;
 
         }
-
-        habilitarOrdenacao();
 
         listaProdutos.innerHTML += `
 
@@ -199,7 +194,9 @@ async function carregarDados() {
 
 </tr>
 
-`;
+`; });
+
+    habilitarOrdenacao();
 
         function habilitarOrdenacao() {
 
