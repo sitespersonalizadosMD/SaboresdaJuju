@@ -201,6 +201,45 @@ async function carregarDados() {
 
 `;
 
+        function habilitarOrdenacao() {
+
+    if (colecaoAtual !== "produtos") return;
+
+    Sortable.create(listaProdutos, {
+
+        animation: 150,
+
+        handle: ".drag-handle",
+
+        onEnd: async () => {
+
+            const linhas = listaProdutos.querySelectorAll("tr");
+
+            const batch = writeBatch(db);
+
+            linhas.forEach((linha, indice) => {
+
+                const id = linha.dataset.id;
+
+                batch.update(
+                    doc(db, colecaoAtual, id),
+                    {
+                        ordem: indice + 1
+                    }
+                );
+
+            });
+
+            await batch.commit();
+
+            carregarDados();
+
+        }
+
+    });
+
+}
+
 // =========================
 // TROCA DE ABAS
 // =========================
