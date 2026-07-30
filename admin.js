@@ -335,9 +335,11 @@ if (produtoId.value === "") {
 
     if (colecaoAtual === "produtos") {
 
-        dados.preco = Number(preco.value);
+    dados.preco = Number(preco.value);
 
-    }
+    dados.personalizavel = personalizavel.checked;
+
+}
 
     try {
 
@@ -363,10 +365,11 @@ if (produtoId.value === "") {
         }
 
         produtoId.value = "";
-        nome.value = "";
-        preco.value = "";
+nome.value = "";
+preco.value = "";
+personalizavel.checked = true;
 
-        nome.focus();
+nome.focus();
 
         carregarDados();
 
@@ -396,13 +399,15 @@ window.editarRegistro = function (id) {
 
     if (colecaoAtual === "produtos") {
 
-        preco.value = dados.preco;
+    preco.value = dados.preco;
 
-    } else {
+    personalizavel.checked = dados.personalizavel ?? true;
 
-        preco.value = "";
+} else {
 
-    }
+    preco.value = "";
+
+}
 
     nome.focus();
 
