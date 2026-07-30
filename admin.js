@@ -354,6 +354,7 @@ if (produtoId.value === "") {
 
 } else {
 
+    console.log(dados);
             await updateDoc(
 
                 doc(db, colecaoAtual, produtoId.value),
