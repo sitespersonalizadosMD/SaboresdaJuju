@@ -352,25 +352,21 @@ const total = produtoAtual.preco + taxa;
 
     mensagem += `*Prato:* ${produtoAtual.nome}%0A%0A`;
 
-    if (produtoAtual.personalizavel) {
+   mensagem += "*Acompanhamentos:*%0A";
 
-    mensagem += "*Acompanhamentos:*%0A";
+dados.acompanhamentos.forEach(item => {
 
-    dados.acompanhamentos.forEach(item => {
+    mensagem += `• ${item}%0A`;
 
-        mensagem += `• ${item}%0A`;
+});
 
-    });
+if (dados.finalizacao !== "") {
 
-    if (dados.finalizacao !== "") {
-
-        mensagem += `%0A*Finalização:* ${dados.finalizacao}%0A`;
-
-    }
-
-    mensagem += `*Farofa:* ${dados.farofa}%0A`;
+    mensagem += `%0A*Finalização:* ${dados.finalizacao}%0A`;
 
 }
+
+mensagem += `*Farofa:* ${dados.farofa}%0A`;
 
     mensagem += `*Pagamento:* ${pagamento}%0A`;
 
