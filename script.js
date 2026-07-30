@@ -29,6 +29,15 @@ const formaPagamentoModal = document.getElementById("formaPagamentoModal");
 
 const valorTotalModal = document.getElementById("valorTotalModal");
 
+const blocoAcompanhamentos =
+    document.getElementById("blocoAcompanhamentos");
+
+const blocoFinalizacao =
+    document.getElementById("blocoFinalizacao");
+
+const blocoFarofa =
+    document.getElementById("blocoFarofa");
+
 /*=========================================
 VARIÁVEIS
 =========================================*/
@@ -111,11 +120,24 @@ function abrirModal(produto){
     tituloPrato.innerText = produto.nome;
 
     precoPrato.innerText =
-    `R$ ${produto.preco.toFixed(2)}`;
+        `R$ ${produto.preco.toFixed(2)}`;
 
-    renderizarAcompanhamentos();
+    if (produto.personalizavel) {
 
-    renderizarFinalizacoes();
+        blocoAcompanhamentos.style.display = "";
+        blocoFinalizacao.style.display = "";
+        blocoFarofa.style.display = "";
+
+        renderizarAcompanhamentos();
+        renderizarFinalizacoes();
+
+    } else {
+
+        blocoAcompanhamentos.style.display = "none";
+        blocoFinalizacao.style.display = "none";
+        blocoFarofa.style.display = "none";
+
+    }
 
     limparFormulario();
 
