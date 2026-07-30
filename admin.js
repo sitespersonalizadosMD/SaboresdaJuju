@@ -42,6 +42,7 @@ const btnSite = document.getElementById("btnSite");
 
 let colecaoAtual = "produtos";
 let registros = new Map();
+let sortable = null;
 
 // =========================
 // ABAS
@@ -214,11 +215,15 @@ if (colecaoAtual === "produtos") {
     habilitarOrdenacao();
     }
 
-        function habilitarOrdenacao() {
+       function habilitarOrdenacao() {
 
     if (colecaoAtual !== "produtos") return;
 
-    Sortable.create(listaProdutos, {
+    if (sortable) {
+        sortable.destroy();
+    }
+
+    sortable = Sortable.create(listaProdutos, {
 
         animation: 150,
 
