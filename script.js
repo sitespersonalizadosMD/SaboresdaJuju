@@ -29,14 +29,8 @@ const formaPagamentoModal = document.getElementById("formaPagamentoModal");
 
 const valorTotalModal = document.getElementById("valorTotalModal");
 
-const blocoAcompanhamentos =
-    document.getElementById("blocoAcompanhamentos");
-
-const blocoFinalizacao =
-    document.getElementById("blocoFinalizacao");
-
-const blocoFarofa =
-    document.getElementById("blocoFarofa");
+const blocoPersonalizacao =
+    document.getElementById("blocoPersonalizacao");
 
 /*=========================================
 VARIÁVEIS
@@ -124,18 +118,14 @@ function abrirModal(produto){
 
     if (produto.personalizavel) {
 
-        blocoAcompanhamentos.style.display = "";
-        blocoFinalizacao.style.display = "";
-        blocoFarofa.style.display = "";
+        blocoPersonalizacao.style.display = "";
 
         renderizarAcompanhamentos();
         renderizarFinalizacoes();
 
     } else {
 
-        blocoAcompanhamentos.style.display = "none";
-        blocoFinalizacao.style.display = "none";
-        blocoFarofa.style.display = "none";
+        blocoPersonalizacao.style.display = "none";
 
     }
 
