@@ -487,11 +487,10 @@ if (config.exists() && config.data().ativo === false) {
        if (dados.ativo !== false) {
 
    produtos.push({
-
     nome: dados.nome,
     preco: dados.preco,
-    ordem: dados.ordem
-
+    ordem: dados.ordem,
+    personalizavel: dados.personalizavel ?? true
 });
 
 }
