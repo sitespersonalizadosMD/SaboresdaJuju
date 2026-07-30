@@ -19,6 +19,8 @@ import {
 
 const nome = document.getElementById("nome");
 const preco = document.getElementById("preco");
+const personalizavel =
+    document.getElementById("personalizavel");
 const produtoId = document.getElementById("produtoId");
 
 const btnSalvar = document.getElementById("btnSalvar");
@@ -30,6 +32,8 @@ const abaAcompanhamentos = document.getElementById("abaAcompanhamentos");
 const abaFinalizacoes = document.getElementById("abaFinalizacoes");
 
 const grupoPreco = document.getElementById("grupoPreco");
+const grupoPersonalizacao =
+    document.getElementById("grupoPersonalizacao");
 const tituloTabela = document.getElementById("tituloTabela");
 const lblNome = document.getElementById("lblNome");
 
@@ -57,18 +61,21 @@ function atualizarAbas() {
     if (colecaoAtual === "produtos") {
 
         abaProdutos.classList.add("ativo");
+        grupoPersonalizacao.style.display = "block";
 
     }
 
     if (colecaoAtual === "acompanhamentos") {
 
         abaAcompanhamentos.classList.add("ativo");
+        grupoPersonalizacao.style.display = "none";
 
     }
 
     if (colecaoAtual === "finalização") {
 
         abaFinalizacoes.classList.add("ativo");
+        grupoPersonalizacao.style.display = "none";
 
     }
 
