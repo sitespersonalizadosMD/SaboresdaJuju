@@ -145,23 +145,27 @@ function renderizarAcompanhamentos(){
 
     grupo.innerHTML = "";
 
-    acompanhamentos.forEach(item=>{
+   acompanhamentos.forEach(item=>{
 
-        grupo.innerHTML += `
+    grupo.innerHTML += `
 
-            <label>
+        <label>
 
-                <input
-                    type="checkbox"
-                    value="${item}">
+            <input
+                type="checkbox"
+                value="${item.nome}">
 
-                ${item}
+            ${item.nome}
 
-            </label>
+            ${item.preco > 0
+                ? `<strong style="color:#2e7d32;"> (+R$ ${item.preco.toFixed(2)})</strong>`
+                : ""}
 
-        `;
+        </label>
 
-    });
+    `;
+
+});
 
     limitarAcompanhamentos();
 
