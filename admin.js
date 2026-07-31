@@ -172,15 +172,18 @@ if (colecaoAtual === "produtos") {
 
         let colunaPreco = "";
 
-        if (colecaoAtual === "produtos") {
+if (
+    colecaoAtual === "produtos" ||
+    colecaoAtual === "acompanhamentos"
+) {
 
-            colunaPreco = `
-                <td>
-                    R$ ${Number(dados.preco).toFixed(2)}
-                </td>
-            `;
+    colunaPreco = `
+        <td>
+            R$ ${Number(dados.preco ?? 0).toFixed(2)}
+        </td>
+    `;
 
-        }
+}
 
         listaProdutos.innerHTML += `
 
