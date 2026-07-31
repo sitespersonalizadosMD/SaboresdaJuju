@@ -376,7 +376,15 @@ dados.acompanhamentos.forEach(item => {
 
 dados.acompanhamentos.forEach(item => {
 
-    mensagem += `• ${item}%0A`;
+    mensagem += `• ${item.nome}`;
+
+    if (item.preco > 0) {
+
+        mensagem += ` (+R$ ${item.preco.toFixed(2)})`;
+
+    }
+
+    mensagem += `%0A`;
 
 });
 
@@ -428,13 +436,30 @@ function atualizarTotalModal() {
 
     let total = produtoAtual.preco;
 
+    document
+        .querySelectorAll(".grupo-checkbox input:checked")
+        .forEach(input => {
+
+            const acompanhamento = acompanhamentos.find(
+                item => item.nome === input.value
+            );
+
+            if (acompanhamento) {
+
+                total += acompanhamento.preco;
+
+            }
+
+        });
+
     if (formaPagamentoModal.value === "Alimentação/Refeição") {
 
         total += 2;
 
     }
 
-    valorTotalModal.innerText = `Total: R$ ${total.toFixed(2)}`;
+    valorTotalModal.innerText =
+        `Total: R$ ${total.toFixed(2)}`;
 
 }
 /*=========================================
