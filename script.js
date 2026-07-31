@@ -518,7 +518,13 @@ if (config.exists() && config.data().ativo === false) {
 
         if (dados.ativo !== false) {
 
-    acompanhamentos.push(dados.nome);
+    acompanhamentos.push({
+
+    nome: dados.nome,
+
+    preco: dados.preco ?? 0
+
+});
 
 }
 
