@@ -418,6 +418,10 @@ window.editarRegistro = function (id) {
 
     personalizavel.checked = dados.personalizavel ?? true;
 
+} else if (colecaoAtual === "acompanhamentos") {
+
+    preco.value = dados.preco ?? 0;
+
 } else {
 
     preco.value = "";
