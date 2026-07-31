@@ -349,6 +349,12 @@ if (produtoId.value === "") {
 
 }
 
+if (colecaoAtual === "acompanhamentos") {
+
+    dados.preco = Number(preco.value);
+
+}
+
     try {
 
 if (produtoId.value === "") {
