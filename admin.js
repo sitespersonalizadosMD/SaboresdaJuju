@@ -120,7 +120,7 @@ document.querySelector("#grupoPreco label").textContent = "Preço";
         document.querySelector("#grupoPreco label").textContent = "Preço";
 
         grupoPreco.style.display = "none";
-        cabecalhoPreco.style.display = "none";
+        cabecalhoPreco.style.display = "";
 
         lblNome.textContent = "Nome da finalização";
         tituloTabela.textContent = "Finalizações cadastradas";
