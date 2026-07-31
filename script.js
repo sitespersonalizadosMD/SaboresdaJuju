@@ -288,14 +288,6 @@ CAPTURAR DADOS
 
 function obterDados() {
 
-    const acompanhamentosEscolhidos = [];
-
-    document
-        .querySelectorAll(".grupo-checkbox input:checked")
-        .forEach(item => {
-            acompanhamentosEscolhidos.push(item.value);
-        });
-
     const finalizacao =
         document.querySelector(
             'input[name="finalizacao"]:checked'
