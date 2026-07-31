@@ -93,23 +93,31 @@ function atualizarFormulario() {
         cabecalhoPreco.style.display = "";
 
         lblNome.textContent = "Nome do prato";
-        tituloTabela.textContent = "Pratos cadastrados";
+tituloTabela.textContent = "Pratos cadastrados";
+
+document.querySelector("#grupoPreco label").textContent = "Preço";
 
     }
 
     if (colecaoAtual === "acompanhamentos") {
 
-        grupoPreco.style.display = "none";
-        cabecalhoPreco.style.display = "none";
+    grupoPreco.style.display = "block";
+    cabecalhoPreco.style.display = "";
 
-        lblNome.textContent = "Nome do acompanhamento";
-        tituloTabela.textContent = "Acompanhamentos cadastrados";
+    lblNome.textContent = "Nome do acompanhamento";
+    tituloTabela.textContent = "Acompanhamentos cadastrados";
 
-        preco.value = "";
+    document.querySelector("#grupoPreco label").textContent = "Preço adicional (R$)";
 
+    if (preco.value === "") {
+        preco.value = "0";
     }
 
+}
+
     if (colecaoAtual === "finalização") {
+
+        document.querySelector("#grupoPreco label").textContent = "Preço";
 
         grupoPreco.style.display = "none";
         cabecalhoPreco.style.display = "none";
