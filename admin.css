@@ -348,7 +348,10 @@ table td:first-child {
     width: 35px !important;
     min-width: 35px !important;
     max-width: 35px !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    padding: 0 !important;
     text-align: center;
+}
+
+.drag-handle {
+    cursor: grab;
 }
