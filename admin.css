@@ -355,3 +355,42 @@ table td:first-child {
 .drag-handle {
     cursor: grab;
 }
+/* =========================
+   CONFIGURAÇÕES DO SITE
+========================= */
+
+body > h2 {
+    max-width: 900px;
+    margin: 30px auto 15px;
+    padding: 0 20px;
+    font-size: 24px;
+}
+
+#btnSite {
+    display: block;
+    width: calc(100% - 40px);
+    max-width: 860px;
+    margin: 0 auto 40px;
+
+    padding: 16px 20px;
+
+    border: none;
+    border-radius: 10px;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+#btnSite:hover {
+    transform: translateY(-1px);
+    opacity: 0.95;
+}
+
+#btnSite:active {
+    transform: scale(0.99);
+}
