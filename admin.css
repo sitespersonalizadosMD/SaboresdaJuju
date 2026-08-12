@@ -343,3 +343,15 @@ tbody td:last-child{
     display: block;
     margin: 20px auto 0;
 }
+table th:first-child,
+table td:first-child {
+    width: 35px !important;
+    min-width: 35px !important;
+    max-width: 35px !important;
+    padding: 0 !important;
+    text-align: center;
+}
+
+.drag-handle {
+    cursor: grab;
+}
