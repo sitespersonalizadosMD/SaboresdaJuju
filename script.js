@@ -314,9 +314,9 @@ function obterDados() {
         )?.value || "";
 
     const farofa =
-        document.querySelector(
-            'input[name="farofa"]:checked'
-        ).value;
+    document.querySelector(
+        'input[name="farofa"]:checked'
+    )?.value || "";
 
     return {
         prato: produtoAtual.nome,
