@@ -384,10 +384,12 @@ const taxa = pagamento === "Alimentação/Refeição" ? 2 : 0;
 let total = produtoAtual.preco + taxa;
 
 dados.acompanhamentos.forEach(item => {
-
     total += item.preco;
-
 });
+
+if (dados.finalizacao) {
+    total += dados.finalizacao.preco;
+}
 
 if (dados.finalizacao) {
 
