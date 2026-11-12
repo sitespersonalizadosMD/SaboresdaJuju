@@ -611,28 +611,6 @@ if (config.exists() && config.data().ativo === false) {
 
     });
 
-
-// Finalizações
-const finalSnap = await getDocs(collection(db, "finalização"));
-
-finalSnap.forEach(doc => {
-
-    const dados = doc.data();
-
-    if (dados.ativo !== false) {
-
-        finalizacoes.push({
-
-            nome: dados.nome,
-
-            preco: Number(dados.preco ?? 0)
-
-        });
-
-    }
-
-});
-
 // Agora desenha os produtos na tela
 renderizarProdutos();
     }
