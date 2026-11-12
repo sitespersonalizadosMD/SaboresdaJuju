@@ -378,7 +378,8 @@ const valorTroco = document.getElementById("valorTroco").value;
 
 }
 
-    const taxa = pagamento === "Alimentação/Refeição" ? 2 : 0;
+
+const taxa = pagamento === "Alimentação/Refeição" ? 2 : 0;
 
 let total = produtoAtual.preco + taxa;
 
@@ -387,6 +388,13 @@ dados.acompanhamentos.forEach(item => {
     total += item.preco;
 
 });
+
+if (dados.finalizacao) {
+
+    total += dados.finalizacao.preco;
+
+}
+
 
     let mensagem = "🍽️ *PEDIDO*%0A%0A";
 
