@@ -577,20 +577,46 @@ if (config.exists() && config.data().ativo === false) {
 
     });
 
-   // Finalizações
-const finalSnap = await getDocs(collection(db, "finalização"));
+   
+function renderizarFinalizacoes() {
 
-finalSnap.forEach(doc => {
+    const grupo = document.querySelector(".grupo-radio");
 
-    const dados = doc.data();
+    grupo.innerHTML = "";
 
-    if (dados.ativo !== false) {
+    finalizacoes.forEach(item => {
 
-    finalizacoes.push(dados.nome);
+        grupo.innerHTML += `
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="finalizacao"
+                    value="${item.nome}">
+
+                ${item.nome}
+
+                ${item.preco > 0
+                    ? `<strong style="color:#2e7d32;"> (+R$ ${item.preco.toFixed(2)})</strong>`
+                    : ""}
+
+            </label>
+
+        `;
+
+    });
+
+    grupo.querySelectorAll('input[name="finalizacao"]').forEach(input => {
+
+        input.addEventListener("change", () => {
+            atualizarTotalModal();
+        });
+
+    });
 
 }
 
-});
 
 // Agora desenha os produtos na tela
 renderizarProdutos();
