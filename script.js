@@ -171,17 +171,18 @@ function renderizarAcompanhamentos(){
 
 }
 
+
 /*=========================================
 RENDERIZAR FINALIZAÇÕES
 =========================================*/
 
-function renderizarFinalizacoes(){
+function renderizarFinalizacoes() {
 
     const grupo = document.querySelector(".grupo-radio");
 
     grupo.innerHTML = "";
 
-    finalizacoes.forEach(item=>{
+    finalizacoes.forEach(item => {
 
         grupo.innerHTML += `
 
@@ -190,9 +191,13 @@ function renderizarFinalizacoes(){
                 <input
                     type="radio"
                     name="finalizacao"
-                    value="${item}">
+                    value="${item.nome}">
 
-                ${item}
+                ${item.nome}
+
+                ${item.preco > 0
+                    ? `<strong style="color:#2e7d32;"> (+R$ ${item.preco.toFixed(2)})</strong>`
+                    : ""}
 
             </label>
 
@@ -200,7 +205,16 @@ function renderizarFinalizacoes(){
 
     });
 
+    grupo.querySelectorAll('input[name="finalizacao"]').forEach(input => {
+
+        input.addEventListener("change", () => {
+            atualizarTotalModal();
+        });
+
+    });
+
 }
+
 
 /*=========================================
 FECHAR MODAL
@@ -598,49 +612,26 @@ if (config.exists() && config.data().ativo === false) {
     });
 
 
-/*=========================================
-RENDERIZAR FINALIZAÇÕES
-=========================================*/
+// Finalizações
+const finalSnap = await getDocs(collection(db, "finalização"));
 
-function renderizarFinalizacoes() {
+finalSnap.forEach(doc => {
 
-    const grupo = document.querySelector(".grupo-radio");
+    const dados = doc.data();
 
-    grupo.innerHTML = "";
+    if (dados.ativo !== false) {
 
-    finalizacoes.forEach(item => {
+        finalizacoes.push({
 
-        grupo.innerHTML += `
+            nome: dados.nome,
 
-            <label>
+            preco: Number(dados.preco ?? 0)
 
-                <input
-                    type="radio"
-                    name="finalizacao"
-                    value="${item.nome}">
-
-                ${item.nome}
-
-                ${item.preco > 0
-                    ? `<strong style="color:#2e7d32;"> (+R$ ${item.preco.toFixed(2)})</strong>`
-                    : ""}
-
-            </label>
-
-        `;
-
-    });
-
-    grupo.querySelectorAll('input[name="finalizacao"]').forEach(input => {
-
-        input.addEventListener("change", () => {
-            atualizarTotalModal();
         });
 
-    });
+    }
 
-}
-
+});
 
 // Agora desenha os produtos na tela
 renderizarProdutos();
