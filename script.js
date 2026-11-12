@@ -578,6 +578,30 @@ if (config.exists() && config.data().ativo === false) {
     });
 
    
+
+    // Finalizações
+    const finalSnap = await getDocs(collection(db, "finalização"));
+
+    finalSnap.forEach(doc => {
+
+        const dados = doc.data();
+
+        if (dados.ativo !== false) {
+
+            finalizacoes.push({
+                nome: dados.nome,
+                preco: Number(dados.preco ?? 0)
+            });
+
+        }
+
+    });
+
+
+/*=========================================
+RENDERIZAR FINALIZAÇÕES
+=========================================*/
+
 function renderizarFinalizacoes() {
 
     const grupo = document.querySelector(".grupo-radio");
