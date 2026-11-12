@@ -105,11 +105,9 @@ function renderizarProdutos(){
 ABRIR MODAL
 =========================================*/
 
-function abrirModal(produto){
+function abrirModal(produto) {
 
     produtoAtual = produto;
-
-    atualizarTotalModal();
 
     tituloPrato.innerText = produto.nome;
 
@@ -131,10 +129,11 @@ function abrirModal(produto){
 
     limparFormulario();
 
+    atualizarTotalModal();
+
     modal.classList.add("ativo");
 
 }
-
 /*=========================================
 RENDERIZAR ACOMPANHAMENTOS
 =========================================*/
@@ -240,15 +239,29 @@ window.addEventListener("click",(e)=>{
 LIMPAR
 =========================================*/
 
-function limparFormulario(){
+function limparFormulario() {
 
     document
-    .querySelectorAll(".grupo-checkbox input")
-    .forEach(item=>{
+        .querySelectorAll(".grupo-checkbox input")
+        .forEach(item => {
+            item.checked = false;
+        });
 
-        item.checked=false;
+    document
+        .querySelectorAll('input[name="finalizacao"]')
+        .forEach(item => {
+            item.checked = false;
+        });
 
-    });
+    document
+        .querySelectorAll('input[name="farofa"]')
+        .forEach(item => {
+            item.checked = false;
+        });
+
+    formaPagamentoModal.value = "";
+
+    atualizarTotalModal();
 
 }
 
@@ -389,12 +402,6 @@ dados.acompanhamentos.forEach(item => {
 
 if (dados.finalizacao) {
     total += dados.finalizacao.preco;
-}
-
-if (dados.finalizacao) {
-
-    total += dados.finalizacao.preco;
-
 }
 
 
