@@ -85,6 +85,7 @@ function atualizarAbas() {
 // FORMULÁRIO
 // =========================
 
+
 function atualizarFormulario() {
 
     if (colecaoAtual === "produtos") {
@@ -93,43 +94,46 @@ function atualizarFormulario() {
         cabecalhoPreco.style.display = "";
 
         lblNome.textContent = "Nome do prato";
-tituloTabela.textContent = "Pratos cadastrados";
+        tituloTabela.textContent = "Pratos cadastrados";
 
-document.querySelector("#grupoPreco label").textContent = "Preço";
+        document.querySelector("#grupoPreco label").textContent = "Preço";
 
     }
 
     if (colecaoAtual === "acompanhamentos") {
 
-    grupoPreco.style.display = "block";
-    cabecalhoPreco.style.display = "";
+        grupoPreco.style.display = "block";
+        cabecalhoPreco.style.display = "";
 
-    lblNome.textContent = "Nome do acompanhamento";
-    tituloTabela.textContent = "Acompanhamentos cadastrados";
+        lblNome.textContent = "Nome do acompanhamento";
+        tituloTabela.textContent = "Acompanhamentos cadastrados";
 
-    document.querySelector("#grupoPreco label").textContent = "Preço adicional (R$)";
+        document.querySelector("#grupoPreco label").textContent = "Preço adicional (R$)";
 
-    if (preco.value === "") {
-        preco.value = "0";
+        if (preco.value === "") {
+            preco.value = "0";
+        }
+
     }
-
-}
 
     if (colecaoAtual === "finalização") {
 
-        document.querySelector("#grupoPreco label").textContent = "Preço";
-
-        grupoPreco.style.display = "none";
+        grupoPreco.style.display = "block";
         cabecalhoPreco.style.display = "";
 
         lblNome.textContent = "Nome da finalização";
         tituloTabela.textContent = "Finalizações cadastradas";
 
-        preco.value = "";
+        document.querySelector("#grupoPreco label").textContent = "Preço adicional (R$)";
+
+        if (preco.value === "") {
+            preco.value = "0";
+        }
 
     }
 
 }
+
 
 // =========================
 // LISTAR
@@ -174,9 +178,9 @@ if (colecaoAtual === "produtos") {
 
 if (
     colecaoAtual === "produtos" ||
-    colecaoAtual === "acompanhamentos"
+    colecaoAtual === "acompanhamentos" ||
+    colecaoAtual === "finalização"
 ) {
-
     colunaPreco = `
         <td>
             R$ ${Number(dados.preco ?? 0).toFixed(2)}
@@ -352,9 +356,12 @@ if (produtoId.value === "") {
 
 }
 
-if (colecaoAtual === "acompanhamentos") {
+if (
+    colecaoAtual === "acompanhamentos" ||
+    colecaoAtual === "finalização"
+) {
 
-    dados.preco = Number(preco.value);
+    dados.preco = Number(preco.value || 0);
 
 }
 
@@ -405,6 +412,7 @@ nome.focus();
 // EDITAR
 // =========================
 
+
 window.editarRegistro = function (id) {
 
     const dados = registros.get(id);
@@ -412,28 +420,27 @@ window.editarRegistro = function (id) {
     if (!dados) return;
 
     produtoId.value = id;
-
     nome.value = dados.nome;
 
     if (colecaoAtual === "produtos") {
 
-    preco.value = dados.preco;
+        preco.value = dados.preco;
 
-    personalizavel.checked = dados.personalizavel ?? true;
+        personalizavel.checked = dados.personalizavel ?? true;
 
-} else if (colecaoAtual === "acompanhamentos") {
+    } else if (
+        colecaoAtual === "acompanhamentos" ||
+        colecaoAtual === "finalização"
+    ) {
 
-    preco.value = dados.preco ?? 0;
+        preco.value = dados.preco ?? 0;
 
-} else {
-
-    preco.value = "";
-
-}
+    }
 
     nome.focus();
 
 };
+
 
 // =========================
 // EXCLUIR
