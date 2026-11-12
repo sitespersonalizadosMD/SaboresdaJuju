@@ -302,9 +302,10 @@ function limitarAcompanhamentos(){
 CAPTURAR DADOS
 =========================================*/
 
+
 function obterDados() {
 
-     const acompanhamentosEscolhidos = [];
+    const acompanhamentosEscolhidos = [];
 
     document
         .querySelectorAll(".grupo-checkbox input:checked")
@@ -315,22 +316,24 @@ function obterDados() {
             );
 
             if (acompanhamento) {
-
                 acompanhamentosEscolhidos.push(acompanhamento);
-
             }
 
         });
 
-    const finalizacao =
+    const finalizacaoSelecionada =
         document.querySelector(
             'input[name="finalizacao"]:checked'
         )?.value || "";
 
+    const finalizacao = finalizacoes.find(
+        item => item.nome === finalizacaoSelecionada
+    ) || null;
+
     const farofa =
-    document.querySelector(
-        'input[name="farofa"]:checked'
-    )?.value || "";
+        document.querySelector(
+            'input[name="farofa"]:checked'
+        )?.value || "";
 
     return {
         prato: produtoAtual.nome,
@@ -341,6 +344,7 @@ function obterDados() {
     };
 
 }
+
 /*=========================================
 FINALIZAR PEDIDO
 =========================================*/
