@@ -416,11 +416,21 @@ dados.acompanhamentos.forEach(item => {
 
 });
 
-if (dados.finalizacao !== "") {
 
-    mensagem += `%0A*Finalização:* ${dados.finalizacao}%0A`;
+if (dados.finalizacao) {
+
+    mensagem += `%0A*Finalização:* ${dados.finalizacao.nome}`;
+
+    if (dados.finalizacao.preco > 0) {
+
+        mensagem += ` (+R$ ${dados.finalizacao.preco.toFixed(2)})`;
+
+    }
+
+    mensagem += `%0A`;
 
 }
+
 
 mensagem += `*Farofa:* ${dados.farofa}%0A`;
 
@@ -458,6 +468,7 @@ mensagem += `%0A*Total:* R$ ${total.toFixed(2)}`;
 
 });
 
+
 function atualizarTotalModal() {
 
     if (!produtoAtual) return;
@@ -480,6 +491,21 @@ function atualizarTotalModal() {
 
         });
 
+    const finalizacaoSelecionada =
+        document.querySelector(
+            'input[name="finalizacao"]:checked'
+        )?.value || "";
+
+    const finalizacao = finalizacoes.find(
+        item => item.nome === finalizacaoSelecionada
+    );
+
+    if (finalizacao) {
+
+        total += finalizacao.preco;
+
+    }
+
     if (formaPagamentoModal.value === "Alimentação/Refeição") {
 
         total += 2;
@@ -490,6 +516,7 @@ function atualizarTotalModal() {
         `Total: R$ ${total.toFixed(2)}`;
 
 }
+
 /*=========================================
 INICIALIZAÇÃO
 =========================================*/
