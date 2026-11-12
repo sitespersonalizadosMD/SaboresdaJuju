@@ -188,7 +188,7 @@ function renderizarFinalizacoes() {
             <label>
 
                 <input
-                    type="radio"
+                    type="checkbox"
                     name="finalizacao"
                     value="${item.nome}">
 
@@ -207,7 +207,42 @@ function renderizarFinalizacoes() {
     grupo.querySelectorAll('input[name="finalizacao"]').forEach(input => {
 
         input.addEventListener("change", () => {
+
+            if (input.checked) {
+
+                const itemSelecionado = finalizacoes.find(
+                    item => item.nome === input.value
+                );
+
+                const outrasSelecionadas = Array.from(
+                    grupo.querySelectorAll('input[name="finalizacao"]:checked')
+                ).filter(outro => {
+
+                    const item = finalizacoes.find(
+                        finalizacao => finalizacao.nome === outro.value
+                    );
+
+                    return item && (item.preco > 0) === (itemSelecionado.preco > 0)
+                        && outro !== input;
+
+                });
+
+                if (outrasSelecionadas.length > 0) {
+
+                    input.checked = false;
+
+                    alert(
+                        itemSelecionado.preco > 0
+                            ? "Você pode escolher somente uma finalização paga."
+                            : "Você pode escolher somente uma finalização gratuita."
+                    );
+
+                }
+
+            }
+
             atualizarTotalModal();
+
         });
 
     });
@@ -334,14 +369,21 @@ function obterDados() {
 
         });
 
-    const finalizacaoSelecionada =
-        document.querySelector(
-            'input[name="finalizacao"]:checked'
-        )?.value || "";
+    const finalizacoesEscolhidas = [];
 
-    const finalizacao = finalizacoes.find(
-        item => item.nome === finalizacaoSelecionada
-    ) || null;
+    document
+        .querySelectorAll('input[name="finalizacao"]:checked')
+        .forEach(input => {
+
+            const finalizacao = finalizacoes.find(
+                item => item.nome === input.value
+            );
+
+            if (finalizacao) {
+                finalizacoesEscolhidas.push(finalizacao);
+            }
+
+        });
 
     const farofa =
         document.querySelector(
@@ -352,7 +394,7 @@ function obterDados() {
         prato: produtoAtual.nome,
         preco: produtoAtual.preco,
         acompanhamentos: acompanhamentosEscolhidos,
-        finalizacao,
+        finalizacoes: finalizacoesEscolhidas,
         farofa
     };
 
@@ -400,9 +442,9 @@ dados.acompanhamentos.forEach(item => {
     total += item.preco;
 });
 
-if (dados.finalizacao) {
-    total += dados.finalizacao.preco;
-}
+dados.finalizacoes.forEach(item => {
+    total += item.preco;
+});
 
 
     let mensagem = "🍽️ *PEDIDO*%0A%0A";
@@ -426,17 +468,21 @@ dados.acompanhamentos.forEach(item => {
 });
 
 
-if (dados.finalizacao) {
+if (dados.finalizacoes.length > 0) {
 
-    mensagem += `%0A*Finalização:* ${dados.finalizacao.nome}`;
+    mensagem += `%0A*Finalização:*%0A`;
 
-    if (dados.finalizacao.preco > 0) {
+    dados.finalizacoes.forEach(item => {
 
-        mensagem += ` (+R$ ${dados.finalizacao.preco.toFixed(2)})`;
+        mensagem += `• ${item.nome}`;
 
-    }
+        if (item.preco > 0) {
+            mensagem += ` (+R$ ${item.preco.toFixed(2)})`;
+        }
 
-    mensagem += `%0A`;
+        mensagem += `%0A`;
+
+    });
 
 }
 
